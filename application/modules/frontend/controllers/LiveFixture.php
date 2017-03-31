@@ -1,0 +1,106 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class LiveFixture extends FrontendController {
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 
+	public function __construct()
+    {
+        parent::__construct();
+
+        // Ideally you would autoload the parser
+    }
+	*/
+    private static $limit = 13;
+
+    public function __construct()
+    {
+    	parent::__construct();
+
+        // Ideally you would autoload the parser
+    }
+
+    public function index($date='')
+    {
+    	$this->load->model(['Fixture']);
+    	$data['fixtures'] = $this->Fixture->GetList(100000, 0);
+    	$this->twig->set($data);
+    	$this->twig->display('listLiveFixture');
+    }
+
+    public function livedetail($fixture_id, $slug)
+    {
+    	$this->load->model('Fixture');
+    	$match = $this->Fixture->GetLiveFixture($fixture_id);
+
+    	$data['serverid'] = -1;
+    	if($match!==FALSE)
+    	{
+    		$this->twig->title()->prepend($slug);
+
+    		$data['servers'] = array(
+    			0 => trim($match['server_0']) ,
+    			1 => trim($match['server_1']) ,
+    			2 => trim($match['server_2']) ,
+    			3 => trim($match['server_3']) ,
+    			4 => trim($match['server_4']) ,
+    			5 => trim($match['server_5']) ,
+    			6 => trim($match['server_6']) ,
+    			7 => trim($match['server_7']) ,
+    			8 => trim($match['server_8'])
+    			);
+    		for ($i=0; $i < sizeof($data['servers']); $i++) {
+
+    			if($data['servers'][$i] !='' && $data['servers'][$i] !=NULL)
+    			{
+    				$data['serverid'] = $i;
+    				break;
+    			}
+
+    		}
+    		$data['livefixture'] = $match;
+    	}
+    	$this->twig->set($data);
+    	$this->twig->display('detailTranDau');
+    }
+
+    public function livedetailbyserver($fixture_id, $serverid, $slug)
+    {
+    	$this->load->model('Fixture');
+    	$match = $this->Fixture->GetLiveFixture($fixture_id);
+    	$data['serverid'] = $serverid;
+    	if($match!==FALSE)
+    	{
+    		$this->twig->title()->prepend($slug);
+
+    		$data['servers'] = array(
+    			0 => trim($match['server_0']) ,
+    			1 => trim($match['server_1']) ,
+    			2 => trim($match['server_2']) ,
+    			3 => trim($match['server_3']) ,
+    			4 => trim($match['server_4']) ,
+    			5 => trim($match['server_5']) ,
+    			6 => trim($match['server_6']) ,
+    			7 => trim($match['server_7']) ,
+    			8 => trim($match['server_8'])
+    			);
+    		$data['livefixture'] = $match;
+    	}
+    	$this->twig->set($data);
+    	$this->twig->display('detailTranDau');
+    }
+
+}

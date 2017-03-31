@@ -1,0 +1,48 @@
+{% extends _layout %}
+
+{% block STYLES %}
+<style type="text/css" media="screen">
+#example_length .form-control{
+    padding: 0;
+}
+</style>
+
+{% endblock %}
+
+{% block CONTENT %}
+<div class="form-control">
+    <input class="ckfinder-input" style="width:60%" type="text" value="">
+    <button class="ckfinder-popup button-a button-a-background" >Browse Server</button>
+</div>
+{% endblock %}
+
+{% block SCRIPTS %}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="/grocery_crud/texteditor/ckfinder/ckfinder.js" type="text/javascript"></script>
+
+<script  type="text/javascript">
+
+//CKFinder.popup(basePath, width, height, selectActionFunction, callback) 
+$( ".ckfinder-popup" ).on( "click", function() {
+    var config = {};
+    // Always use 100% width and height when nested using this middle page.
+    config.width = config.height = '100%';
+    config.rememberLastFolder = false;
+    config.startupPath = "Images://";
+    config.connectorPath = '/dashboard/filemanagement/connector';
+    var ckfinder = new CKFinder(config);
+    var select_upload = $(this).prev();
+    ckfinder.selectActionFunction = function( fileUrl, data ) {
+        select_upload.val(fileUrl);
+    }
+    ckfinder.popup({
+        width: 800,
+        height: 600
+    });
+});
+
+</script>
+
+{% endblock %}

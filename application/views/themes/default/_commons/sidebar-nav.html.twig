@@ -1,0 +1,43 @@
+{% block SIDEBAR %}
+<div class="l_nopadding col-md-3">
+    <div class="top_vert_menu menu">
+        <ul class="nav nav-pills nav-stacked">
+        	{% for row in _menus %}
+                {% if row.ParentId==0 and row.Parent==NULL %}
+                    {% if current_menu(1)==row.MenuCode %}
+                        <li class="active"><a href="{{ site_url(row.MenuCode) }}" title="{{ row.MenuName }}" target="_blank">{{ row.MenuName }}</a></li>
+                    {% else %}
+                        <li><a href="{{ site_url(row.MenuCode) }}" title="{{ row.MenuName }}" target="_blank">{{ row.MenuName }}</a></li>
+                    {% endif %}
+                {% else %}
+                    {% if row.ParentId==0 and row.Parent!=NULL %}
+                        {% if current_menu(1)==row.MenuCode %}
+                            <li class="dropdown active">
+                                <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" title="{{ row.MenuName }}">{{ row.MenuName }} <b class=" icon-angle-down"></b></a>
+                        {% else %}
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" title="{{ row.MenuName }}">{{ row.MenuName }} <b class=" icon-angle-down"></b></a>
+                        {% endif %}
+                                <ul class="dropdown-menu">
+                                {% for submenu in row.Parent %}
+                                    <li><a href="{{ site_url(submenu.MenuCode) }}" title="{{ submenu.MenuName }}" target="_blank">{{ submenu.MenuName }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+	        {# <li class="active" role="presentation"><a href="/truc-tiep-bong-da/">Lịch Phát
+	        Sóng Bóng Đá</a></li>
+	        <li role="presentation"><a href="/trang/1-bang-xep-hang" titile="bảng xếp hạng" target="_blank">Bảng Xếp Hạng</a></li>
+	        <li role="presentation"><a href="/trang/3-link-sopcast" titile="link sopcast" target="_blank">Link Sopcat</a></li>
+	        <li role="presentation"><a href="/trang/4-ket-qua-tran-dau-ket-thuc" titile="kết quả bóng đá" target="_blank">Kết quả trận đấu kết thúc</a></li>
+	        <li role="presentation"><a href="/trang/7-number-game" titile="number game" target="_blank">Room Number Game</a></li>
+	        <li role="presentation"><a href="/trang/24-top-nha-cai-nen-choi" titile="nhà cái uy tín" target="_blank">Nhà Cái Uy Tín</a></li>
+	        <li role="presentation"><a href="/trang/5-bong-da-ao" titile="bóng ảo" target="_blank">Room bóng ảo</a></li>
+	        <li role="presentation"><a href="/trang/6-link-vao-bong-88-khong-bi-chan" titile="bong88" target="_blank">Vào Bong88</a></li>
+	        <li role="presentation"><a href="http://tip.mybongda.com" target="_blank" titile="Tip mỗi ngày">Tip Mỗi Ngày</a></li> #}
+        </ul>
+    </div>
+</div>
+{% endblock %}

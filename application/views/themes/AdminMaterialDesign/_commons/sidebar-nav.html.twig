@@ -1,0 +1,80 @@
+{% block SIDEBAR %}
+<div id="sidebar-wrapper" class="sidebar-nav navbar-collapse">
+    <ul id="side-menu" class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="/dashboard">
+                ADMIN CONTROL
+            </a>
+        </li>
+        {% if role=='1' %}
+        <li>
+            <a href="#">Dashboard <i class="glyphicon glyphicon-menu-down"></i></a>
+            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                
+                <li>
+                    <a href="{{site_url('backend/manager/managersystemuser')}}">Quản lý user</a>
+                </li>
+                                                    
+            </ul>     
+        </li>
+        <li>
+            <a href="{{site_url('backend/manager/menus')}}">Manager Menu</a>
+        </li>
+        <li>
+            <a href="#">Quản Lý Links <i class="glyphicon glyphicon-menu-down"></i></a>
+            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                <li>
+                    <a href="{{site_url('backend/ManagerLinks/categorylink')}}">Loại link</a>
+                </li>
+                <li>
+                    <a href="{{site_url('backend/ManagerLinks/livematchs')}}">Quản lý trận đấu</a>
+                </li>
+                <li>
+                    <a href="{{site_url('backend/ManagerLinks/Tournamentmanagement')}}">Giải đấu</a>
+                </li>
+                <li>
+                    <a href="{{site_url('backend/ManagerLinks/Teammanagement')}}">Đội</a>
+                </li>                                      
+            </ul>
+        </li>
+        <li>
+            <a href="#">Quản Lý Auto Get <i class="glyphicon glyphicon-menu-down"></i></a>
+            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                <li>
+                    <a href="{{site_url('cronjobs/tools/loadfixture')}}">Load lịch</a>
+                </li>                                
+            </ul>
+        </li>
+        <li>
+            <a href="{{site_url('backend/manager/pagestatic')}}">Pages</a>
+        </li>
+        {% endif %}
+        {# <li>
+            <a href="#">Quản Lý Nhà Cái <i class="glyphicon glyphicon-menu-down"></i></a>
+            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                <li>
+                    <a href="{{site_url('backend/manager/nhacai')}}">Danh sách nhà cái</a>
+                </li>
+                <li>
+                    <a href="{{site_url('backend/manager/tintunhacai')}}">Đăng bài viết</a>
+                </li>                                       
+            </ul>                            
+        </li> #}
+        {% if role=='1' %}
+        <li>
+            <a href="{{site_url('backend/manager/ads')}}">Quảng cáo</a>
+        </li>
+        <li>
+            <a href="{{site_url('backend/filemanagement')}}">Quản lý file</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{{site_url('dashboard/changepassword')}}">Đổi password</a>
+        </li>
+        <li>
+            <a href="{{site_url('dashboard/logout')}}">logout</a>
+        </li>
+    </ul>
+</div>
+<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a>
+{% endblock %}

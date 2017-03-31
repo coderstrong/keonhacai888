@@ -1,0 +1,30 @@
+<div class="two_third">
+    {% for item in videos %}
+        {% if item['video_id'] == pid %}
+            <h3 class="app-popup-title">{{item['title']}}</h3>
+            <div class="app-popup-video">
+                {{item['content']}}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="one_third last">
+    <div class="app-list-video-related">
+        <ul class="v-list-items">           
+            {% for item in videos %}
+                {% if item['video_id'] != pid %}
+                    <li>
+                        <div class="v-image">
+                            <a class="view-video" href="javascript:void(0)" data-video="{{item['video_id']}}">
+                                <img class="attachment-thumbnail size-thumbnail wp-post-image" width="120" height="90" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ base_url }}/{{ videos['0']['thumb'] }}" onload="lzld(this)" alt="{{item['title']}}"/>
+                            </a>
+                        </div>
+                        <div class="v-title">
+                            <a class="view-video" href="javascript:void(0)" data-video="{{item['video_id']}}">{{item['title']}}</a>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>      

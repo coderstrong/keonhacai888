@@ -1,0 +1,556 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+    <div class="content">
+        {% if banners['TOP_CONTENT'] != null %}
+        <div class="top-app-ads">
+            <div class="images-header">
+                <div class="head-banner">
+                    {% for i in 0..1 %}
+                        {% if banners['TOP_CONTENT'][i] != NULL %}
+                            <div class="mobile-score">
+                                {# <a href="{{item['click_url']}}">
+                                {{item['content']}}
+                              </a> #}
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                            <div class="pc-score">
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {# 
+                    <script type="text/javascript">
+                        var img = "<a href='http://aff.sports998.com/Accept.ashx?sid=a2de53ca-7ecf-4542-97fd-301c2039c4ff&lang=vi-vn&aid=88705&cid=2d8c70f2-d40c-4264-b89c-34c66da18e86'><img src='{{ base_url }}uploads/2016/12/viSBnG_492x80.gif'></a>";
+                        document.write(img);
+                    </script>
+                     #}
+                </div>
+
+                {% if banners['TOP_CONTENT'][2] != NULL %}
+                <div class="bottom-banner">
+                    {% for i in 2..3 %}
+                        {% if banners['TOP_CONTENT'][i] != NULL %}
+                            <div class="mobile-score">
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                            <div class="pc-score">
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if banners['TOP_CONTENT'][4] != NULL %}
+                <div class="bottom-banner">
+                    {% for i in 4..5 %}
+                        {% if banners['TOP_CONTENT'][i] != NULL %}
+                            <div class="mobile-score">
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                            <div class="pc-score">
+                                {{ banners['TOP_CONTENT'][i]['content'] }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+        {% endif %}
+
+        <div class="section-app live-section">
+        
+            <div class="box-live">
+                <h3 class="app-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch trực tiếp : Giải đấu lớn - Live Full HD</h3>
+                <div style="" class="live1 listlive biglive">
+                    {% set viewmore = false %}
+                    <table class="tips table-responsive list-match list-td table_style">
+                        <tr style="opacity: 0;background: none!important">
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                        </tr>
+    
+                        {% for _fix_main in fixtures %}
+                            {% if _fix_main['fixtures_type'] == 1 %}
+                                {% set viewmore = true %}
+                                {% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+                                <tr>
+                                    <td>
+                                        <img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+                                        <strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+                                    </td>
+                                    <td>
+                                        <div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+                                        <div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+                                        {% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+                                            <div class="show-button">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                <a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="show-button">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                <a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+                                        <img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+
+
+                    {# xem thêm #}
+                    {% if viewmore %}
+                        <div class="fixture-more">
+                            <a title="Xem thêm" href="/truc-tiep-bd"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem thêm</a>
+                        </div>
+                    {% endif %}
+                    {% set viewmore = false %}
+
+                </div>
+            </div>
+
+
+            <div class="box-live">
+                <h3 class="app-title second-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch trực tiếp : Giải đấu nhỏ - Videostream HD</h3>
+                <div style="" class="live2 listlive biglive">
+                    <table class="tips table-responsive list-match list-td table_style">
+                        <tr style="opacity: 0;background: none!important">
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                        </tr>
+                        
+                        {% for _fix_main in fixtures %}
+                        {% if _fix_main['fixtures_type'] == 2 or  _fix_main['fixtures_type'] == 3 %}
+                            {% set viewmore = true %}
+                            {% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+                            <tr>
+                                <td>
+                                    <img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+                                    <strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+                                </td>
+                                <td>
+                                    <div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+                                    <div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+                                    {% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+                                        <div class="show-button">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="show-button">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+                                    <img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                    </table>
+
+                    {# xem thêm #}
+                    {% if viewmore %}
+                        <div class="fixture-more">
+                            <a title="Xem thêm" href="/truc-tiep-bd"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem thêm</a>
+                        </div>
+                    {% endif %}
+                    {% set viewmore = false %}
+
+                </div>
+            </div>
+
+
+
+
+            <div class="box-live">
+                <h3 class="app-title second-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch trực tiếp - Videostream HD</h3>
+                <div style="" class="live3 listlive">
+                    <table class="tips table-responsive list-match list-td table_style">
+                        <tr style="opacity: 0;background: none!important">
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                            <td width="33.33%" style="padding: 0!important;border:none!important"></td>
+                        </tr>
+                        
+                        {% for _fix_main in fixtures %}
+                            {% if _fix_main['fixtures_type'] == 4 or _fix_main['fixtures_type'] == 5 %}
+                                {% set viewmore = true %}
+                                {% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+                                <tr>
+                                    <td>
+                                        <img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+                                        <strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+                                    </td>
+                                    <td>
+                                        <div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+                                        <div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+                                        {% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+                                            <div class="show-button">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                <a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="show-button">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                <a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                    <strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+                                        <img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" onload="lzld(this)" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+
+                    {# xem thêm #}
+                    {% if viewmore %}
+                        <div class="fixture-more">
+                            <a title="Xem thêm" href="/truc-tiep-bd"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem thêm</a>
+                        </div>
+                    {% endif %}
+                    {% set viewmore = false %}
+                </div>
+            </div>
+        </div>
+
+        {% if banners['TOP_CONTENT_3'] != null %}
+            <div class="section-ads">
+            {% for item in banners['TOP_CONTENT_3'] %}
+              <div class="textwidget">
+                <div class="pc-score">
+                  {{item['content']}}
+                </div>
+                <div class="mobile-score">
+                  {{item['content']}}
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="section-app new-section">
+            <h3 class="app-title"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Tin Thể Thao</h3>
+            <div class="one_half">
+                <div class="second-guess-app">
+                    {% for _news in news %}
+                        {% if loop.index % 2 == 0 %}
+                            <article class="hentry entry entry_left" id="post-11394">
+                                <div style="width:80px" class="image_styled entry_image">
+                                    <div class="image_frame effect-icon">
+                                        <div class="image_shadow_wrap">
+                                            <a title="{{ _news['title'] }}" class="image_icon_doc">
+                                                <img width="78" height="60" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ _news['image'] }}" onload="lzld(this)"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry_info">
+                                    <h2 class="entry_title entry-title">
+                                        <a title="{{ _news['title'] }}" rel="bookmark" data-p="">{{ _news['title'] }}</a>
+                                        <br>
+                                        <span class="read_more_wrap">
+                                            <a href="{{site_url('tin-tuc')}}/{{_news['news_id']}}/{{_news['slug']}}" title="{{ _news['title'] }}" class="read_more_link cutomreadmore button small"><span>Chi tiết »</span></a>
+                                        </span>
+                                    </h2>
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="one_half last">
+                <div class="second-guess-app">
+                    {% for _news in news %}
+                        {% if loop.index % 2 != 0 %}
+                            <article class="hentry entry entry_left">
+                                <div style="width:80px" class="image_styled entry_image">
+                                    <div class="image_frame effect-icon">
+                                        <div class="image_shadow_wrap">
+                                            <a title="" class="image_icon_doc">
+                                                <img width="78" height="60" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ _news['image'] }}" onload="lzld(this)"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry_info">
+                                    <h2 class="entry_title entry-title">
+                                        <a title="{{ _news['title'] }}" rel="bookmark" data-p="">{{ _news['title'] }}</a>
+                                        <br>
+                                        <span class="read_more_wrap">
+                                            <a href="{{site_url('tin-tuc')}}/{{_news['news_id']}}/{{_news['slug']}}" title="{{ _news['title'] }}" class="read_more_link cutomreadmore button small"><span>Chi tiết »</span></a>
+                                        </span>
+                                    </h2>
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+
+        {% if banners['TOP_CONTENT_4'] != null %}
+            <div class="section-ads">
+            {% for item in banners['TOP_CONTENT_4'] %}
+              <div class="textwidget">
+                <div class="pc-score">
+                  {{item['content']}}
+                </div>
+                <div class="mobile-score">
+                  {{item['content']}}
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="section-app guess-section">
+            <h3 class="app-title"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Nhận định trận đấu</h3>
+            <div class="one_half">
+                <div class="second-guess-app">
+                    {% for _news in nhandinh %}
+                        {% if loop.index % 2 == 0 %}
+                            <article class="hentry entry entry_left" id="post-11394">
+                                <div style="width:80px" class="image_styled entry_image">
+                                    <div class="image_frame effect-icon">
+                                        <div class="image_shadow_wrap">
+                                            <a title="" class="image_icon_doc">
+                                                <img width="78" height="60" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ _news['image'] }}" onload="lzld(this)"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry_info">
+                                    <h2 class="entry_title entry-title">
+                                        <a title="{{ _news['title'] }}" rel="bookmark" data-p="">{{ _news['title'] }}</a>
+                                        <br>
+                                        <span class="read_more_wrap">
+                                            <a href="{{site_url('nhan-dinh')}}/{{_news['news_id']}}/{{_news['slug']}}" title="{{ _news['title'] }}" class="read_more_link cutomreadmore button small"><span>Chi tiết »</span></a>
+                                        </span>
+                                    </h2>
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="one_half last">
+                <div class="second-guess-app">
+                    {% for _news in nhandinh %}
+                        {% if loop.index % 2 != 0 %}
+                            <article class="hentry entry entry_left" id="post-11394">
+                                <div style="width:80px" class="image_styled entry_image">
+                                    <div class="image_frame effect-icon">
+                                        <div class="image_shadow_wrap">
+                                            <a title="" class="image_icon_doc">
+                                                <img width="78" height="60" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ _news['image'] }}" onload="lzld(this)"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry_info">
+                                    <h2 class="entry_title entry-title">
+                                        <a title="{{ _news['title'] }}" rel="bookmark" data-p="">{{ _news['title'] }}</a>
+                                        <br>
+                                        <span class="read_more_wrap">
+                                            <a href="{{site_url('nhan-dinh')}}/{{_news['news_id']}}/{{_news['slug']}}" title="{{ _news['title'] }}" class="read_more_link cutomreadmore button small"><span>Chi tiết »</span></a>
+                                        </span>
+                                    </h2>
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+        
+        {% if banners['TOP_CONTENT_5'] != null %}
+            <div class="section-ads">
+            {% for item in banners['TOP_CONTENT_5'] %}
+              <div class="textwidget">
+                <div class="pc-score">
+                  {{item['content']}}
+                </div>
+                <div class="mobile-score">
+                  {{item['content']}}
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if videos != FALSE %}
+
+        <div class="section-app video-section">
+            <h3 class="app-title"><i class="fa fa-video-camera" aria-hidden="true"></i> Videos Bóng Đá - Xem lại các trận đấu</h3>
+            <div class="video-grid">
+                {% for item in videos %}
+                <div class="entrygrid">
+                    <div class="thumbnail">
+                        <a href="javascript:void(0);" title="Video: {{ item['title'] }}">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{item['image']}}" width="100%" height="130px" alt="Video: {{ item['title'] }}" onload="lzld(this)">
+                        </a>
+                        <div class="category">
+                            <a href="javascript:void(0);" rel="category tag">Video</a>
+                        </div>
+                    </div>
+                    <h3 class="title">{{ item['title'] }}</h3>
+                    <div class="time">{{ time_elapsed_string(item['date_added']) }}</div>
+                </div>
+                {% endfor %}
+
+                <div class="clearboth"></div>
+            </div>
+
+        </div>
+            
+        {% endif %}
+
+        {# 
+        <div class="section-app tip-section">
+            <h3 class="app-title"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Tips - Dự Đoán</h3>
+            <div class="tip-block">
+                <table class="tips table-responsive list-match list-td table_style">
+                    <thead>
+                    <tr>
+                        <th class="sub-hd" style="width:50px">Ngày</th>
+                        <th class="sub-hd" style="width:80px">Trận đấu</th>
+                        <th class="sub-hd" style="width:80px">Tips</th>
+                        <th class="sub-hd" style="width:50px">Tỉ số</th>
+                        <th class="sub-hd" style="width:50px">Kết quả</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for _tip in tips %}
+                            <tr>
+                                {% set tiptime = GMT0toGMT7(_tip['time']) %}
+                                <td>{{ tiptime | date('d-M-Y') }}<span class="tip-time">{{ tiptime | date('H') }}h{{ tiptime | date('i') }}</span></td>
+                                <td>{{ _tip['title'] }}</td>
+                                <td><strong class="tip-choose">{{ _tip['experts_predict'] }}</strong></td>
+                                <td>{{ _tip['score'] }}</td>
+                                <td>
+                                    <div class="tip-rs {{_tip['result_status']}}">{{ _tip['result_status'] }}</div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+        #}
+        
+        <div class="section-app chanel-section">
+            <h3 class="app-title"><i class="fa fa-television" aria-hidden="true"></i> Kênh Trực Tiếp Bóng Đá</h3>
+            <div class="chanel-block">
+                {% for item in channels %}
+                <a class="col-sm-2 col-xs-6 chanelthumnail" title="{{ item['title'] }}" href="javascript:void(0);">
+                    <img alt="{{ item['title'] }}" width="105" height="50" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ base_url ~ item['image'] }}" onload="lzld(this)">
+                </a>
+                {% endfor %}
+
+                <div class="clearboth"></div>
+            </div>
+            
+        </div>
+
+        <div class="clearboth"></div>
+
+    </div>
+
+{% endblock %}
+
+
+
+{% block CSS_LIB_PAGE %}
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<style>
+    .sweet-alert.sweetalert-lg {
+        width: 100% !important;
+        height: 500px;
+        left: 0;
+        margin-left: 0px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 400px;
+        scrolling: no;
+    }
+</style>
+
+{% endblock %}
+
+{% block JS_LIB_PAGE %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    function updateGirdVideo()
+    {
+        jQuery('.entrygrid').each(function() {
+            var ratio = 4;
+            var parentW = jQuery('.video-grid').width();
+            if(parentW > 800)
+              ratio = 5;
+            if (ratio) {
+                var width = (parentW / ratio) - 6;
+                jQuery(this).css('width', width);
+            }
+        });
+    }
+
+    function updateGirdChanels()
+    {
+        jQuery('a.chanelthumnail').each(function() {
+            var ratio = 5;
+            var parentW = jQuery('.chanel-block').width();
+            if(parentW > 800)
+              ratio = 7;
+            if (ratio) {
+                var width = (parentW / ratio) - 6;
+                jQuery(this).css('width', width);
+            }
+        });
+    };
+
+    jQuery(document).ready(function(){
+        updateGirdVideo();
+        updateGirdChanels();
+    });
+
+    jQuery( window ).resize(function() {
+        updateGirdVideo();
+        updateGirdChanels();
+    });
+
+    jQuery(".chanelthumnail").click(function(e){
+        swal("Messages", "Chức năng đang được xây dựng!", "info");
+    });
+
+</script>
+
+
+{% endblock %}

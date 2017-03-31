@@ -1,0 +1,68 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+{% if banners['TOP_CONTENT'] != null %}
+<div class="top-app-ads">
+    <div class="images-header">
+        <div class="head-banner">
+            {% for i in 0..1 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if banners['TOP_CONTENT'][2] != NULL %}
+        <div class="bottom-banner">
+            {% for i in 2..3 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if banners['TOP_CONTENT'][4] != NULL %}
+        <div class="bottom-banner">
+            {% for i in 4..5 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endif %}
+
+<div class="entry content entry-content type-page">
+
+    {% if staticpage != FALSE %}
+        <h1 class="app-page-title">{{staticpage['title']}}</h1>
+        {{staticpage['content']}}
+    {% else %}
+        <h1 class="app-page-title">Nội dung đang được cập nhật...</h1>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}
+

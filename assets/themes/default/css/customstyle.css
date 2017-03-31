@@ -1,0 +1,282 @@
+.tips a.button-live{
+	display: inline;
+	padding: 6px 5px;
+	position: static;
+	line-height: 28px;
+	width: initial;
+	height: inherit;
+	border: 2px solid rgb(227,​ 227,​ 227);
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonface;
+}
+
+.tips a.button-live::after{
+	content: none;
+}
+
+#page .tips a.still-live{
+	color: #001630;
+}
+
+h3.app-title{
+	margin: 15px 0px;
+}
+
+.box-live{
+	margin-bottom: 20px;
+}
+.live-section .live-block
+{
+	max-height: 597px;
+}
+
+#page .entry-content h3.app-title
+{
+	color: #fff;
+}
+
+.player iframe {
+	width: 100%;
+	height: 500px;
+	margin: 10px 0px 5px;
+}
+
+.relative{
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+
+.commingsoon {
+	width:100%;
+	height:470px; 
+	position:relative;
+	background: #149C47 url('../images/commingsoon.jpg') no-repeat center bottom;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.commingsoon .text-play{
+	color: #fff;
+	font-family: tahoma;
+	font-variant: small-caps;
+	line-height: 36px;
+	padding: 0;
+	position: absolute;
+	text-align: center;
+	text-shadow: 3px 3px 5px #363535;
+	text-transform: uppercase;
+	top: 30%;
+	width: 100%;	
+}
+
+#page .commingsoon .text-play h4{
+	font-size: 25px;
+	color: #fff;
+}
+
+#page .commingsoon .text-play a{
+	color: #ffd400;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+.blink {
+	animation-direction: alternate;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-name: blink;
+	animation-timing-function: ease-in-out;
+}
+
+.videostream a{
+	border: 1px solid #c0c0c0;
+}
+
+#page .livenews article{
+	background: #fff none repeat scroll 0 0;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+#page .livenews article h2 a{
+	font-size: 20px;
+}
+
+.read_more_wrap .cutomreadmore
+{
+	display: inline;
+    padding: 3px 0px;
+}
+
+.read_more_wrap .cutomreadmore span
+{
+	display: inline;
+	padding: 0.5em;
+}
+.box-chatroom
+{
+	
+}
+.box-chatroom .custom-head-chat
+{
+	width: 100%;
+    top: 0px;
+    left: 0;
+}
+
+.chanel-block .chanelthumnail {
+    border: 1px solid #ea7403;
+    display: block;
+    float: left;
+}
+
+.live-section .box-live{
+	margin-bottom: 30px;
+}
+.live-section .box-live h3.app-title{
+	margin: 0 0 30px 0;
+}
+
+.biglive {
+    // height: 750px;
+    // overflow-y: scroll;
+}
+.full-post{
+	width: 100%;
+}
+
+.full-post *{
+	font-size: 1.1em;
+}
+.full-post h2{
+	font-size: 1.2em;
+}
+
+//video 
+.video-grid{
+	width: 100%;
+}
+
+.video-grid .entrygrid{
+    float: left;
+    width: 160px;
+    text-align: center;
+    padding: 3px;
+}
+
+.video-grid .entrygrid .thumbnail{
+	position: relative;
+}
+
+.video-grid .entrygrid .thumbnail .category
+{
+    background-color: #9a1d0d;
+    display: block;
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    padding: 0px 8px 0px 8px;
+    border-right: 1px solid #c0c0c0;
+    border-top: 1px solid #c0c0c0;
+}
+
+.video-grid .entrygrid .thumbnail .category a
+{
+	font-size: 12px;
+    color: #ffffff !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Tahoma,Verdana, sans-serif;
+    text-shadow: 1px 1px 1px #000;
+    font-weight: bold;
+}
+
+.video-grid .entrygrid h3.title{
+	padding: 5px 3px;
+    background: #e7e7e7;
+    font-size: 12px;
+    color: #9a1d0d;
+    text-decoration: none;
+    font-family: sans-serif,Tahoma,Verdana;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    font-weight: bold;
+    height: 28px;
+}
+
+.video-grid .entrygrid div.time{
+	
+}
+
+table.dealers {
+	background: #fff;
+}
+
+.table_style table.dealers thead{
+	padding-bottom: 0px;
+}
+
+
+table.dealers p{
+	margin-bottom: 2px;
+}
+
+table.dealers a{
+	display: block;
+	background: #003056;
+	color: #fff !important;
+	padding: 0px 4px;
+}
+
+table.dealers td{
+	text-align: left;
+}
+table.dealers td:first-child{
+	text-align: center;
+}
+
+#bongda_player iframe{
+	width: 1px !important;
+	height: 1px !important;
+}
+
+.fixture-more {
+	text-align: center;
+}
+.fixture-more a {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  color: #ffffff !important;
+  font-size: 1.3em;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.fixture-more a:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}

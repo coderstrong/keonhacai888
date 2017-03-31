@@ -1,0 +1,102 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+	<div class="entry content entry-content type-page">
+		<div class="livenews">
+			{% for item in news %}
+
+				{% if idactive == item['news_id'] %}
+					<article id="articlenews{{item['news_id']}}" class="hentry entry entry_left">
+						<div class="image_styled entry_image">
+							<div class="image_frame effect-icon">
+								<div class="image_shadow_wrap">
+									<a title="{{item['title']}}" href="javascript:void(0);" class="image_icon_doc">
+										<img alt="{{item['title']}}" data-src="{{ item['image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)" style="visibility: visible;" width="248" height="145">
+										<span class="image_overlay" style="opacity: 0; visibility: visible;"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="entry_info">
+							<h2 class="entry_title entry-title"><a title="{{item['title']}}" rel="bookmark" data-p="">{{item['title']}}</a></h2>
+						</div>
+						<div class="entry_content entry-content">
+							<div>
+								<p>{{item['description']}}</p>
+							</div>
+							<div class="read_more_wrap">
+								<a per="articlenews{{item['news_id']}}" rel="newspost{{item['news_id']}}" href="javascript:void(0);" class="read_more_link button small"><span>Chi tiết »</span></a>
+							</div>
+						</div>
+						<div id="newspost{{item['news_id']}}" class="full-post" style="display: block;">
+							<div>{{item['content']}}</div>
+						</div>
+					</article>
+				{% endif %}
+				
+			{% endfor %}
+
+			{% for item in news %}
+				{% if idactive != item['news_id'] %}
+					<article id="articlenews{{item['news_id']}}" class="hentry entry entry_left">
+						<div class="image_styled entry_image">
+							<div class="image_frame effect-icon">
+								<div class="image_shadow_wrap">
+									<a title="{{item['title']}}" href="javascript:void(0);" class="image_icon_doc">
+										<img alt="{{item['title']}}" data-src="{{ item['image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)" style="visibility: visible;" width="248" height="145">
+										<span class="image_overlay" style="opacity: 0; visibility: visible;"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="entry_info">
+							<h2 class="entry_title entry-title"><a title="{{item['title']}}" rel="bookmark" data-p="">{{item['title']}}</a></h2>
+						</div>
+						<div class="entry_content entry-content">
+							<div>
+								<p>{{item['description']}}</p>
+							</div>
+							<div class="read_more_wrap">
+								<a per="articlenews{{item['news_id']}}" rel="newspost{{item['news_id']}}" href="javascript:void(0);" class="read_more_link button small"><span>Chi tiết »</span></a>
+							</div>
+						</div>
+						<div id="newspost{{item['news_id']}}" class="full-post">
+							<div>{{item['content']}}</div>
+						</div>
+					</article>
+				{% endif %}	
+			{% endfor %}
+		</div>
+		
+		<form action="#" method="get" accept-charset="utf-8">
+			<input id="paging" type="hidden" value="1">
+		</form>
+
+		<div class="videostream">
+			{{pagination}}
+		</div>
+
+
+	</div>
+
+{% endblock %}
+
+{% block JS_LIB_PAGE %}
+
+<script type="text/javascript">
+	jQuery(document).ready(function()
+	{
+		jQuery( document ).on( "click", ".read_more_wrap a.read_more_link", function() {
+			var idpost = jQuery(this).attr('rel');
+			var objshow = jQuery('#'+idpost);
+			jQuery('.full-post').hide(100);
+			objshow.show();
+
+
+			// play video 
+
+		});
+	});
+</script>
+
+{% endblock %}

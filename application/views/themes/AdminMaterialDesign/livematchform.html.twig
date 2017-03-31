@@ -1,0 +1,506 @@
+{% extends _layout %}
+
+{% block STYLES %}
+<style type="text/css" media="screen">
+#example_length .form-control{
+    padding: 0;
+}
+</style>
+
+{% endblock %}
+
+{% block CONTENT %}
+
+<div id="main-content" class="dashboard">
+    <div class="page-title col-md-12">
+        <i class="icon-custom-left"></i>
+        <h3><strong>Quản lý trận đấu</strong></h3>
+    </div>
+    <div id="formInput" class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Please Input:</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form id="form1" method="post" role="form" parsley-validate class="icon-validation">
+                        <div class="col-md-12">  
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">SEO</label>
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input name="Slug" value="{{result.Slug}}" type="text" parsley-minlength="3" class="form-control" readonly="true">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Đội nhà</label>
+                                    <div class="input-icon right">
+                                        <select id="TeamHomeId" class="selectpicker form-control" name="TeamHomeId" title="Chọn giải đấu" data-live-search="true">
+                                            {% for team in teams %}
+                                                {% if team.TeamId != result.TeamHomeId %}
+                                                    <option value="{{team.TeamId}}">{{team.TeamName}}</option>
+                                                {% else %}
+                                                    <option value="{{team.TeamId}}" selected>{{team.TeamName}}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Đội khách</label>
+                                    <div class="input-icon right">
+                                        <select id="TeamAwayId" class="selectpicker form-control" name="TeamAwayId" title="Chọn giải đấu" data-live-search="true">
+                                            {% for team in teams %}
+                                                {% if team.TeamId != result.TeamAwayId %}
+                                                    <option value="{{team.TeamId}}">{{team.TeamName}}</option>
+                                                {% else %}
+                                                    <option value="{{team.TeamId}}" selected>{{team.TeamName}}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Giải đấu</label>
+                                    <div class="input-icon right">
+                                        <select id="TournamentId" class="selectpicker form-control" name="TournamentId" title="Chọn giải đấu" data-live-search="true">
+                                            {% for tour in tournaments %}
+                                                {% if tour.TournamentId != result.TournamentId %}
+                                                    <option value="{{tour.TournamentId}}">{{tour.Tournament_name}}</option>
+                                                {% else %}
+                                                    <option value="{{tour.TournamentId}}" selected>{{tour.Tournament_name}}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Thời gian</label>
+                                    <div class='input-group date' id='datetimepicker'>
+
+                                        <input name="StartDate" value="{{getTimeGMT7(result.StartDate)|date("m/d/Y H:i:00")}}" type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Auto Sopcast</label>
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input name="auto_sopcast" value="{{result.auto_sopcast}}" type="text" parsley-minlength="3" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Auto Now Goal</label>
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input name="auto_nowgoal" value="{{result.auto_nowgoal}}" type="text" parsley-minlength="3" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">ID Simulator</label>
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input name="auto_idsimulator" value="{{result.auto_idsimulator}}" type="text" parsley-minlength="3" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Loại</label>
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        {% set ischecked = result.Type==1 ? 'checked':'' %}
+                                        {% if result  %}
+                                            <input type="checkbox" name="type" {{ischecked}}>Trả phí ?<br>
+                                        {% else %}
+                                            <input type="checkbox" name="type" checked>Trả phí ?<br>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 1xbet</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 1xbet" name="server_0" class="form-control" >{{result.server_0}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 1</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 01" name="server_1" class="form-control" >{{result.server_1}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 2</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 02" name="server_2" class="form-control" >{{result.server_2}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 3</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 03" name="server_3" class="form-control" >{{result.server_3}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 4</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 04" name="server_4" class="form-control" >{{result.server_4}}</textarea>
+                                    </div>
+                                </div>
+ 
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 5</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 05" name="server_5" class="form-control" >{{result.server_5}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 6</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 06" name="server_6" class="form-control" >{{result.server_6}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 7</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 07" name="server_7" class="form-control" >{{result.server_7}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">iFrame 8</label>
+                                    <div class="input-icon right">
+                                        <textarea placeholder="Enter frame 08" name="server_8" class="form-control" >{{result.server_8}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-danger" onclick="javascript:$('#form4').parsley('validate');">Save</button>
+                        <a href="{{site_url('backend/ManagerLinks/livematchs')}}" type="reset" class="btn btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-title col-md-12">
+        <i class="icon-custom-left"></i>
+        <h3><strong>Add Links</strong></h3>
+    </div>
+    <div class="col-md-12"> 
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Loai link</label>
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <select id="cate_value" class="selectpicker form-control" name="categorylinkid" title="Chọn loại link" data-live-search="true">
+                        {% for item in categorylinks %}
+                        <option value="{{item.LinkCategoryId}}">{{item.Name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"> 
+            <div class="form-group">
+                <label class="control-label">Link</label>
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input id="link_value" name="link" value="" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label class="control-label">Speed</label>
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input id="speed_value" name="speed" value="" type="text" class="form-control">
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label class="control-label">Rate</label>
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input id="rate_value" name="rate" value="" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <div class="form-group">
+                <label class="control-label">Action</label>
+                <div class="input-icon right">
+                    <input id="linkid" type="hidden" value="">
+                    <input id="livematchid" type="hidden" value="{{result.LiveMatchId}}">
+                    <a id="add" class="btn btn-danger save" href="javascript:void(0);"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-list-alt"></span></th>
+                    <th>Loai Link</th>
+                    <th>Link</th>
+                    <th>Speed</th>
+                    <th>Rate</th>
+                    <th>Command</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in links %}
+                    <tr>
+                        <td></td>
+                        <td ref={{item.LinkCategoryId}}>{{item.Name}}</td>
+                        <td>{{item.Link}}</td>
+                        <td>{{item.Speed}}</td>
+                        <td>{{item.Rate}}</td>
+                        <td>
+                            <a data="{{item.LinkCategoryId}}" ref="{{item.LinkId}}" class="btn btn-default btn-sm edit" href="javascript:void(0);" title="chỉnh sửa"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            <a ref="{{item.LinkId}}" data="{{item.Link}}" class="btn btn-default btn-sm delete" href="javascript:void(0);" title="Xóa" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% if expression %}
+
+
+    
+{% endif %}
+</div>
+
+{# hidden item #}
+
+{# end hidden item #}
+
+{% endblock %}
+
+{% block SCRIPTS %}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<link rel="stylesheet" type="text/css" href="{{ assets_folder }}/plugins/SweetAlert/sweetalert.css"/>
+<script src="{{ assets_folder }}/plugins/SweetAlert/sweetalert.min.js"></script>
+
+<script src="{{ assets_folder }}/plugins/parsley/parsley.js"></script>
+<script src="{{ assets_folder }}/plugins/parsley/parsley.extend.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+{# <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script> #}
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{{ assets_folder }}/plugins/bootstrap-select/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{ assets_folder }}/plugins/bootstrap-select/js/bootstrap-select.min.js" charset="utf-8"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script type="text/javascript" src="{{ assets_folder }}/plugins/datepicker/moment.min.js"></script>
+<script type="text/javascript" src="{{ assets_folder }}/plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="{{ assets_folder }}/plugins/datepicker/bootstrap-datetimepicker.min.css" />
+
+{% endblock %}
+
+{% block SCRIPT_INLINE %}
+<script type="text/javascript" charset="utf-8" async defer>
+
+    $(document).ready(function() {
+
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm:00',
+                 
+            });
+        });
+
+        {% if dberror %}
+            swal({
+              title: "Error!",
+              text: "{{dberror}}",
+              timer: 1000,
+              showConfirmButton: false
+            });
+        {% endif %}
+
+
+        var t = $('#example').DataTable(
+        {
+            "searching": false,
+            "paging": false,
+            // "order": [[ 1, 'asc' ]],
+            "columnDefs": [
+                {
+                    bSortable: false,
+                    aTargets: [ -1 ]
+                },
+                {
+                    bSortable: false,
+                    aTargets: [ 0 ]
+                }
+            ]
+        });
+
+        t.buttons().container().appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+
+        //add count
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
+
+        //ajax control
+        $(document).on("click", ".save", function() {
+            var livematchid =$("#livematchid").val();
+            var linkid =$("#linkid").val();
+            var cate_value = $("#cate_value option:selected").val();
+            var link_value = $("#link_value").val();
+            var speed_value = $("#speed_value").val();
+            var rate_value = $("#rate_value").val();
+
+            if(cate_value=='' || link_value=='')
+            {
+                swal("Bạn quên nhập link trước khi lưu!");
+            }else
+            {
+                if(livematchid=='')
+                {
+                    swal("Bạn cần save trận trước khi thêm link!");
+                }else 
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{site_url('backend/ManagerLinks/ajaxaddlinks')}}",
+                        data: { livematchid : livematchid, linkid: linkid, cate_value: cate_value, link_value: link_value,speed_value: speed_value,rate_value: rate_value },
+                        //beforeSend: function (data) {
+                            //b.html("<img class='ajax' src='{{ public_url }}themes/default/img/loading.gif' alt='loading..' />");
+                        //}
+                    }).done(function( msg ) {
+                        //b.html("");
+                        if(msg != 'FALSE')
+                        {
+                            t.row.add([
+                                '',
+                                $("#cate_value option:selected").text(),
+                                link_value,
+                                speed_value,
+                                rate_value,
+                                '<a data="'+cate_value+'" ref="'+msg+'" class="btn btn-default btn-sm edit" href="javascript:void(0);" title="chỉnh sửa"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a ref="'+msg+'" data="'+link_value+'" type="button" class="btn btn-default btn-sm delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>'
+                            ]).draw( false );
+                            //reset
+                            $("#link_value").val('');
+                            $("#linkid").val('');
+
+                        }else{
+                            swal("Có lỗi. bạn nên thử lại sau ít phút.");
+                        }
+                    });
+                }
+                
+            }
+        });
+
+        $(document).on("click", ".delete", function() {
+            var clicked = $(this);
+            var linkid =clicked.attr('ref');
+            var link =clicked.attr('data');
+            swal({
+                title: "Bạn muốn xóa links sau",
+                text: link,
+                type: "info",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+            },
+            function(){
+                $.ajax({
+                type: "POST",
+                url: "{{site_url('backend/ManagerLinks/ajaxremovelinks')}}",
+                data: { linkid: linkid },
+                //beforeSend: function (data) {
+                    //b.html("<img class='ajax' src='{{ public_url }}themes/default/img/loading.gif' alt='loading..' />");
+                //}
+                }).done(function( msg ) {
+                    //b.html("");
+                    if(msg != 'FALSE')
+                    {
+                        swal("delete finished!");
+                        t.row(clicked.parents('tr'))
+                        .remove()
+                        .draw();
+                    }else{
+                        swal("Có lỗi. bạn nên thử lại sau ít phút.");
+                    }
+                });
+            });
+        });
+
+        $(document).on("click", ".edit", function() {
+            var clicked = $(this);
+            var tdcontrol = clicked.parent();
+            var tdrate = tdcontrol.prev();
+            var tdspeed =tdrate.prev();
+            var tdlink =tdspeed.prev();
+            console.log(clicked.attr('data'));
+            var linkid =$("#linkid").val(clicked.attr('ref'));
+            var cate_value = $("#cate_value").val(clicked.attr('data'));
+            var link_value = $("#link_value").val(tdlink.text());
+            var speed_value = $("#speed_value").val(tdspeed.text());
+            var rate_value = $("#rate_value").val(tdrate.text());
+
+            t.row(clicked.parents('tr'))
+            .remove()
+            .draw();
+            
+        });
+    } );
+
+
+
+    $(function() {
+        // $('.selectpicker').on('change', function(){
+        //     var content = $('#listtructiep');
+        //     var selected = $(this).find("option:selected").val();
+        //     $.ajax({
+        //             method: "POST",
+        //             url: "{{site_url('frontend/home/loadfilterajax')}}",
+        //             data: { tournamentid: selected },
+        //             beforeSend: function() {
+        //                 content.css({ opacity: 0.6 });
+        //             }
+
+        //         })
+        //         .done(function( msg ) {
+        //             if (msg!=null) {
+        //                 content.html(msg);
+        //             }
+        //             else{
+        //                 content.html('');
+        //             }
+        //             content.css({ opacity: 1 });
+        //         })
+        // });
+    });
+</script>
+{% endblock %}

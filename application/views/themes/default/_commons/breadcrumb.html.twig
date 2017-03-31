@@ -1,0 +1,14 @@
+<section id="inner-headline">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="{{ basic_url }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                {% for segment in current_menu() %}
+                    <li class="active">{{ segment }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</section>

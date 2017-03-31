@@ -1,0 +1,177 @@
+{% extends _layout %}
+
+{% block STYLES %}
+<style type="text/css" media="screen">
+#example_length .form-control{
+    padding: 0;
+}
+</style>
+
+{% endblock %}
+
+{% block CONTENT %}
+
+<div id="main-content" class="dashboard">
+    <div class="page-title">
+        <i class="icon-custom-left"></i>
+        <h3><strong>Management Category</strong></h3>
+    </div>
+    
+    <div id="formInput" class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Please Input:</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form id="form4" method="post" role="form" parsley-validate class="icon-validation">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Your Name</label>
+                            <div class="input-icon right">
+                                <i class="fa"></i>
+                                <input type="text" parsley-minlength="3" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Your Adress</label>
+                            <div class="input-icon right">
+                                <i class="fa"></i>
+                                <input type="text" parsley-minlength="3" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Your email</label>
+                            <div class="input-icon right">
+                                <i class="fa"></i>
+                                <input type="text" parsley-type="email" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea id="textcontent" name="textcontent"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <button class="btn btn-danger" onclick="javascript:$('#form4').parsley('validate');">Submit</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-list-alt"></span></th>
+                    <th>Parent</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Type</th>
+                    <th>Languages</th>
+                    <th>Command</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in result %}
+                    <tr>
+                        <td></td>
+                        <td>{{item['Parent']}}</td>
+                        <td>{{item['MenuName']}}</td>
+                        <td>{{item['MenuCode']}}</td>
+                        <td>{{item['TypeName']}}</td>
+                        <td>{{item['LangCode']}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                            <button type="button" class="btn btn-default btn-sm" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{# hidden item #}
+
+{# end hidden item #}
+
+{% endblock %}
+
+{% block SCRIPTS %}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="{{ site_url() }}/system/cktools/ckeditor/ckeditor.js"></script>
+<script src="{{ site_url() }}/system/cktools/ckeditor/config.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="{{ assets_backend_folder }}/plugins/SweetAlert/sweetalert.css"/>
+<script src="{{ assets_backend_folder }}/plugins/SweetAlert/sweetalert.min.js"></script>
+
+<script src="{{ assets_backend_folder }}/plugins/parsley/parsley.js"></script>
+<script src="{{ assets_backend_folder }}/plugins/parsley/parsley.extend.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var t = $('#example').DataTable(
+    {
+        "paging": false,
+        "order": [[ 1, 'asc' ]],
+        "columnDefs": [
+            {
+                bSortable: false,
+                aTargets: [ -1 ]
+            },
+            {
+                bSortable: false,
+                aTargets: [ 0 ]
+            }
+        ]
+        ,"buttons": [
+        {
+            text: 'Add',
+            action: function ( e, dt, node, config ) {
+                //swal({
+                 // title: "HTML <small>Title</small>!",
+                 // text: "A custom <span style=\"color:#F8BB86\">html<span> message.",
+                 // html: true,
+                  //animation: false,
+                  //showConfirmButton: true
+                //});
+                $.pgwModal({
+                    target: '#modal-add',
+                    title : 'Please input',
+                    closeOnBackgroundClick : false,
+                });
+            }
+        },
+        //'copy',
+        'excel'
+        ],
+    });
+
+    t.buttons().container().appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+
+    //add count
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+
+} );
+</script>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+{% endblock %}

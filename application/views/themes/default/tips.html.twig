@@ -1,0 +1,41 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+	<div class="entry content entry-content type-page">
+
+		<div class="section-app tip-section">
+            <h3 class="app-title">Tips - Dự Đoán</h3>
+            <div class="tip-block">
+                <table class="tips table-responsive list-match list-td table_style">
+                    <thead>
+                    <tr>
+                        <th class="sub-hd" style="width:50px">Ngày</th>
+                        <th class="sub-hd" style="width:80px">Trận đấu</th>
+                        <th class="sub-hd" style="width:80px">Tips</th>
+                        <th class="sub-hd" style="width:50px">Tỉ số</th>
+                        <th class="sub-hd" style="width:50px">Kết quả</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for _tip in tips %}
+                            <tr>
+                                {% set tiptime = GMT0toGMT7(_tip['time']) %}
+                                <td>{{ tiptime | date('d-M-Y') }}<span class="tip-time">{{ tiptime | date('H') }}h{{ tiptime | date('i') }}</span></td>
+                                <td>{{ _tip['title'] }}</td>
+                                <td><strong class="tip-choose">{{ _tip['experts_predict'] }}</strong></td>
+                                <td>{{ _tip['score'] }}</td>
+                                <td>
+                                    <div class="tip-rs {{_tip['result_status']}}">{{ _tip['result_status'] }}</div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+
+	</div>
+
+{% endblock %}

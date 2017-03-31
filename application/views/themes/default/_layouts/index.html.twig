@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if gt IE 8]>--> <html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8" />
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<![endif]-->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no" />
+
+<link rel="shortcut icon" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
+<link rel="apple-touch-icon" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg">
+<link rel="apple-touch-icon" sizes="167x167" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg">
+<link rel="apple-touch-icon-precomposed" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
+{# <!-- Feeds and Pingback -->
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="alternate" type="application/rss+xml" title="Trực tiếp bóng đá RSS2 Feed" href="{{ base_url }}/feed/" />
+<link rel="pingback" href="{{ base_url }}xmlrpc.php" /> #}
+<title>{{ meta.meta_title }}</title>
+
+{% if current_url == '' or current_url == 'trang-chu' %}
+  <meta name="robots" content="index,follow">
+{% else %}
+  <meta name="robots" content="noindex,follow">
+{% endif %}
+<link rel="canonical" href="{{ base_url ~ current_url }}" />
+
+{# facebook #}
+<meta property="og:url" content="{{ base_url ~ current_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ meta.meta_title }}" />
+<meta property="og:description" content="{{ meta.meta_description }}" />
+<meta property="og:image" content="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
+<meta property="og:locale" content="en_US" />
+{# twitter #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ meta.meta_title }}" />
+<meta name="twitter:image" content="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
+<meta name="twitter:url" content="{{ base_url ~ current_url }}" />
+<meta name="twitter:description" content="{{ meta.meta_description }}" />
+
+<meta property='st:title' content='{{ meta.meta_title }}' />
+<meta property="st:image" content="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg">
+<meta property='st:type' content='website' />
+
+
+<script type='text/javascript' src='{{ base_url }}plugins/jquery/jquery.js?ver=1.12.4'></script>
+<script type="text/javascript" src='{{ assets_folder }}/js/responsive.custom.js?ver=1.01'></script>
+<script type='text/javascript' src='{{ base_url }}plugins/vvo-lazyload/lazyload.min.js'></script> 
+
+
+<script type='application/ld+json'>{"@context":"http://schema.org","@type":"WebSite","@id":"#website","url":"{{ base_url }}","name":"Trực tiếp bóng đá","potentialAction":{"@type":"SearchAction","target":"{{ base_url }}?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type='application/ld+json'>{"@context":"http://schema.org","@type":"Person","url":"{{ base_url }}","sameAs":[],"@id":"#person","name":"Thế Dũng"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<style type="text/css">
+  img.wp-smiley,
+  img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+</style>
+<link rel='stylesheet' id='rs-plugin-settings-css'  href='{{ assets_folder }}/css/revslider/settings.css?ver=5.2.6' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-style-css'  href='{{ assets_folder }}/css/screen.min.css?ver=4.5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-icons-awesome-css'  href='{{ assets_folder }}/awesome47/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-responsive-css'  href='{{ assets_folder }}/css/responsive.min.css?ver=4.5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-skin-css'  href='{{ assets_folder }}/css/skin.css?ver=1486572278' type='text/css' media='all' />
+<link rel='stylesheet' id='font|Abel-css'  href='http://fonts.googleapis.com/css?family=Abel&ver=4.5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='font|Roboto:300-css'  href='http://fonts.googleapis.com/css?family=Roboto%3A300&ver=4.5.6' type='text/css' media='all' />
+
+<link rel='shortlink' href='{{ base_url }}' />
+
+<link rel="image_src" href="{{ base_url }}uploads/2016/12/12bet.gif">
+
+<link rel="icon" href="{{ base_url }}uploads/2016/12/cropped-Logo_Bigbetpro_Pro-02-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="{{ base_url }}uploads/2016/12/cropped-Logo_Bigbetpro_Pro-02-192x192.jpg" sizes="192x192" />
+
+<meta name="msapplication-TileImage" content="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
+
+<!--[if IE 6 ]>
+    <link href="{{ assets_folder }}/css/ie6.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ assets_folder }}/js/dd_belatedpng-min.js"></script>
+    <script type="text/javascript" src="{{ assets_folder }}/js/ie6.js"></script>
+    <![endif]-->
+<!--[if IE 7 ]>
+<link href="{{ assets_folder }}/css/ie7.css" media="screen" rel="stylesheet" type="text/css">
+<![endif]-->
+<!--[if IE 8 ]>
+<link href="{{ assets_folder }}/css/ie8.css" media="screen" rel="stylesheet" type="text/css">
+<![endif]-->
+<!-- bigbet-app -->
+<!--[if IE]>
+    <script type="text/javascript" src="{{ assets_folder }}/js/html5shiv.js"></script>
+    if(typeof jQuery != 'undefined'){
+      if(jQuery.browser.msie && parseInt(jQuery.browser.version, 10)==8){
+        jQuery(".jqueryslidemenu ul li ul").css({display:'block', visibility:'hidden'});
+      }
+    }
+  <![endif]-->
+  <!-- Make IE8 and below responsive by adding CSS3 MediaQuery support -->
+  <!--[if lt IE 9]>
+  <script type='text/javascript' src='{{ assets_folder }}/js/css3-mediaqueries.js'></script> 
+  <![endif]-->
+  {% block CSS_LIB_PAGE %}
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  {#<style>
+      .sweet-alert.sweetalert-lg {
+          width: 100% !important;
+          height: 500px;
+          left: 0;
+          margin-left: 0px;
+      }
+
+      iframe {
+          width: 100%;
+          height: 400px;
+          scrolling: no;
+      }
+  </style>
+  #}
+  {% endblock %}
+
+  <link href="{{ assets_folder }}/css/bigbet.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="{{ assets_folder }}/css/customstyle.css?=v1.01" media="screen" rel="stylesheet" type="text/css">
+  <style type="text/css" id="rs-plugin-settings-inline-css"> </style>
+</head>
+
+{% if current_url == '' or current_url == 'trang-chu' %}
+
+  <body class="home page page-id-4 page-template page-template-template_rightsidebar page-template-template_rightsidebar-php scroll-to-top scroll-to-top-circle responsive has-shadow no-gradient  no-featured-header">
+
+{% else %}
+
+  <body class="page page-id-4 page-template page-template-template_rightsidebar page-template-template_rightsidebar-php scroll-to-top scroll-to-top-circle responsive has-shadow no-gradient  no-featured-header">
+
+{% endif %}
+
+    <div class="mobile-header">
+      <div class="navbar-inner">
+       <div class="icon-open-menu"><a href="javascript:void(0)"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+       <div class="m-logo"><a href="javascript:void(0)"><img width="80px" src="{{ assets_folder }}/images/knc888-m.jpg"></a></div>
+     </div>
+   </div>
+   <div class="bigbet-app">
+  {# <div class="app-top">
+   <div class="app-top-1">
+        <!--div class="title-match">Manchester vs Chealse<span>18:00</span></div>
+        <span class="time-match">23/11/2016</span-->
+        </div>
+        <div class="list-app-top-2">
+         <div class="app-top-item top-item-1">
+       <!--div class="title-match">Myanmar vs Malaysia<span>15:00</span></div>
+       <span class="time-match">23/11/2016</span-->
+       </div>
+       <div class="app-top-item top-item-2">
+       <!--div class="title-match">Monaco vs   Marseille<span>15:00</span></div>
+       <span class="time-match">23/11/2016</span-->
+       </div>
+       <div class="app-top-item top-item-3">
+       <!--div class="title-match">Chelsea FC vs Tottenham Hotspur<span>21:00</span></div>
+       <span class="time-match">23/11/2016</span-->
+       </div>
+       <div class="app-top-item top-item-4">
+       <!--div class="title-match">Bayern Munich vs Bayer Leverkusen<span>23:15</span></div>
+       <span class="time-match">23/11/2016</span-->
+       </div>
+       <div class="app-top-item top-item-5">
+       <!--div class="title-match">Sevilla vs Valencia<span>23:15</span></div>
+       <span class="time-match">23/11/2016</span-->
+       </div>
+     </div>
+   </div> #}
+   <div class="sidebar001">
+    <div class="side-logo">
+     <a href="{{ site_url() }}">
+       <img src="{{ assets_folder }}/images/knc888.jpg" alt="">
+     </a>
+   </div>
+   <div class="side-menu">
+     <ul>
+
+      {% for row in menus %}
+        {% if row.parent_id==0 and row.Parents==NULL %}
+          {% if current_menu(1)==row.menu_code %}
+           <li class="active"><a href="{{ site_url(row.menu_code) }}"><i class="{{row.css_icon}}" aria-hidden="true"></i>{{ row.menu_name }}</a></li>
+         {% else %}
+           <li><a href="{{ site_url(row.menu_code) }}"><i class="{{row.css_icon}}"></i>{{ row.menu_name }}</a></li>
+         {% endif %}
+       {% endif %}
+     {% endfor %}
+
+   </ul>
+ </div>
+ <div class="ads" style="text-align: center;margin-top:30px">
+  {% if banners['BOTTOM_MENU'] != null %}
+    {% for item in banners['BOTTOM_MENU'] %}
+      {{item['content']}}
+    {% endfor %}
+  {% endif %}
+</div>
+</div>
+<div class="body-warp">
+  <header id="header">
+   <div class="inner">
+    <div class="app-show-right right-app-head">
+      <h3><i class="fa fa-comments" aria-hidden="true"></i>Live chat - Thảo luận kèo</h3>
+    </div>
+    <div class="acc-app-block">
+      <a class="app-register" href="javascript:void(0);">Đăng ký</a>
+      <a class="app-login" href="javascript:void(0);">Đăng nhập</a>
+    </div>
+    <div class="app-support-header">
+      <a href="javascript:void(0);"><i class="fa fa-bolt" aria-hidden="true"></i>Kết nối đam mê</a>
+    </div>
+  </div>
+</header>
+{% if slider != FALSE %}
+
+  <div class="app-slider">
+
+   <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+     <!-- START REVOLUTION SLIDER 5.2.6 auto mode -->
+     <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" data-version="5.2.6">
+      <ul> 
+        {% for item in slider %}
+
+          <li data-index="rs-{{item['id']}}" data-transition="notransition" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-link="{{item['click_url']}}"   data-thumb="{{item['image']}}"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+            <!-- MAIN IMAGE -->
+            <img src="{{item['image']}}"  alt="" title="img_4008"  width="1200" height="375" data-lazyload="{{item['image']}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+            <!-- LAYERS -->
+          </li>
+
+        {% endfor %}
+
+      </ul>
+      <script type='text/javascript' src='{{ assets_folder }}/js/custom_slider.js?ver=1.4.1'></script>
+      <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div> 
+    </div>
+  </div>
+  <!-- END REVOLUTION SLIDER -->
+</div>
+
+{% endif %}
+
+
+<div id="page">
+  <div class="inner right_sidebar">
+    <div id="main">
+
+      {% block CONTENT %}
+
+
+      {% endblock %}
+
+    </div>
+
+    <aside id="sidebar">
+      <div id="sidebar_content" class="lessgap">
+
+        {% if banners['TOP_SIDEBAR'] != null %}
+
+          <section class="widget widget_text">
+            {% for item in banners['TOP_SIDEBAR'] %}
+              <div class="textwidget">
+                <div class="pc-score">
+                  {{item['content']}}
+                </div>
+                <div class="mobile-score">
+                  {{item['content']}}
+                </div>
+              </div>
+            {% endfor %}
+          </section>
+
+        {% endif %}
+        
+        {% if current_url == 'keno-bong-ao' %}
+      
+        <section class="box-chatroom relative">
+          <div class="pc-chat">
+            <div class="absolute custom-head-chat"><a href="http://bigbetpro.local/chat-bong-da/" target="blank">KEONHACAI888.COM - Keno - Bóng Ảo</a></div>
+            <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height:500px ">{"handle":"kenobongao","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
+          </div>
+        </section>
+
+        {% endif %}
+
+        {# <section id="sfp_page_plugin_widget-2" class="widget widget_sfp_page_plugin_widget">
+             <div id="fb-root"></div>
+             <script>
+              (function(d){
+                var js, id = 'facebook-jssdk';
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
+                d.getElementsByTagName('head')[0].appendChild(js);
+              }(document));
+            </script>
+            <!-- SFPlugin by topdevs -->
+            <!-- Page Plugin Code START -->
+            <div class="sfp-container">
+              <div class="fb-page"
+              data-href="https://www.facebook.com/Bigbetpro-154670908266074/"
+              data-width="300"
+              data-height="400"
+              data-hide-cover="false"
+              data-show-facepile="true" 
+              data-show-posts="false">
+            </div>
+          </div>
+          <!-- Page Plugin Code END -->
+        </section> #}
+
+    {% if banners['TOP_SIDEBAR_1'] != null %}
+
+      <section class="widget widget_text">
+        {% for item in banners['TOP_SIDEBAR_1'] %}
+          <div class="textwidget">
+            <div class="pc-score">
+              {{item['content']}}
+            </div>
+            <div class="mobile-score">
+              {{item['content']}}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+
+    {% endif %}
+
+    {# group chat #}
+
+    {% if current_url != 'keno-bong-ao' %}
+
+    <section class="box-chatroom relative">
+      <div class="pc-chat">
+        <div class="absolute custom-head-chat">
+          <a target="blank" href="http://bigbetpro.local/chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>Phóng to room chat</a>
+        </div>
+        <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height:500px ">{"handle":"keonhacai8888","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
+      </div>
+    </section>
+
+    
+
+    {% endif %}
+
+
+    {% if banners['TOP_SIDEBAR_2'] != null %}
+
+      <section class="widget widget_text">
+        {% for item in banners['TOP_SIDEBAR_2'] %}
+          <div class="textwidget">
+            <div class="pc-score">
+              {{item['content']}}
+            </div>
+            <div class="mobile-score">
+              {{item['content']}}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+
+    {% endif %}
+
+    <section id="box-muagiai" class="widget widget_text">
+      <div class="textwidget">
+        <div class="TrendingBets_wrapper_3-V">
+          {{ season_result['value'] }}
+        </div>
+      </div>
+    </section>
+
+
+    {% if banners['TOP_SIDEBAR_3'] != null %}
+
+      <section class="widget widget_text">
+        {% for item in banners['TOP_SIDEBAR_3'] %}
+          <div class="textwidget">
+            <div class="pc-score">
+              {{item['content']}}
+            </div>
+            <div class="mobile-score">
+              {{item['content']}}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+
+    {% endif %}
+
+  </div>
+
+</aside>
+
+<div class="clearboth"></div>
+</div>
+</div>
+
+<footer id="footer">
+
+  <div id="footer_shadow"></div>
+
+  <div class="inner first-block-footer">
+
+
+    <div id="footer_widget_area_one" class="one_fourth">
+      <section id="social-2" class="widget widget_social"><h3 class="widgettitle">Follow Us</h3>
+        <div class="social_wrap social_animation_fade komodomedia_32">
+         <a href="#" rel="nofollow" target="_blank">
+          <img width="32" height="32"  src="{{ assets_folder }}/images/social/komodomedia_32/facebook_32.png" alt="Follow Us on Facebook" title="Follow Us on Facebook"/>
+        </a>
+        <a href="#" rel="nofollow" target="_blank">
+          <img width="32" height="32"  src="{{ assets_folder }}/images/social/komodomedia_32/google_32.png" alt="Follow Us on Google" title="Follow Us on Google"/>
+        </a>
+        <a href="#" rel="nofollow" target="_blank">
+          <img width="32" height="32"  src="{{ assets_folder }}/images/social/komodomedia_32/linkedin_32.png" alt="Follow Us on LinkedIn" title="Follow Us on LinkedIn"/>
+        </a>
+        <a href="#" rel="nofollow" target="_blank">
+          <img width="32" height="32"  src="{{ assets_folder }}/images/social/komodomedia_32/skype_32.png" alt="Follow Us on Skype" title="Follow Us on Skype"/>
+        </a>
+        <a href="#" rel="nofollow" target="_blank">
+          <img width="32" height="32"  src="{{ assets_folder }}/images/social/komodomedia_32/twitter_32.png" alt="Follow Us on Twitter" title="Follow Us on Twitter"/>
+        </a>
+      </div>
+    </section>
+  </div>
+
+
+  <div id="footer_widget_area_two" class="one_fourth">
+    {% if banners['TOP_FOOTER_C2'] != null %}
+      <section id="text-26" class="widget widget_text">  
+        <div class="textwidget">
+          {{banners['TOP_FOOTER_C2'][0]['content']}}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+
+
+  <div id="footer_widget_area_three" class="one_fourth">
+    <section id="text-27" class="widget widget_text">
+      <div class="textwidget">
+        {% if banners['TOP_FOOTER_C3'] != null %}
+          <section id="text-26" class="widget widget_text">  
+            <div class="textwidget">
+              {{banners['TOP_FOOTER_C3'][0]['content']}}
+            </div>
+          </section>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+
+
+  <div id="footer_widget_area_four" class="one_fourth last">
+    <section id="contact_form-2" class="widget widget_contact_form">
+      <h3 class="widgettitle">Góp ý cho chúng tôi</h3>
+      <p style="display:none;">Your message was successfully sent. <strong>Thank You!</strong></p>
+      <form class="contact_form" action="/" method="post" novalidate="novalidate">
+        <p><input type="text" required="required" id="contact_name" name="contact_name" class="text_input" value="" size="22" tabindex="21" />
+         <label for="contact_name">Name *</label></p>
+
+         <p><input type="email" required="required" id="contact_email" name="contact_email" class="text_input" value="" size="22" tabindex="22"  />
+           <label for="contact_email">Email *</label></p>
+
+           <p><textarea required="required" name="contact_content" class="textarea" cols="30" rows="5" tabindex="23"></textarea></p>
+
+           <p><button type="submit" style="background-color:#ffea50" class="button white"><span style="color:#000000">Submit</span></button></p>
+           <input type="hidden" value="pson90*gmail.com" name="contact_to"/>
+           <input type="hidden" value="1" name="theme_contact_form_submit"/>
+         </form>
+       </section>
+     </div>
+
+     <div class="clearboth"></div>
+
+   </div>
+
+
+   <div class="app-before-bottom-footer">
+    {% if banners['BOTTOM_FOOTER'] != null %}
+
+      <div class="inner">
+        {% for i in 0..1 %}
+          {% if banners['BOTTOM_FOOTER'][i] != NULL %}
+
+            {% if i == 0 %}
+              <div class="one_half">
+              {% else %}
+                <div class="one_half last">
+                {% endif %}
+
+                {{banners['BOTTOM_FOOTER'][i]['content']}}
+
+              </div>
+            {% endif %}
+
+          {% endfor %}
+        </div>
+
+      {% endif %}
+
+    </div>
+
+
+    <div id="footer_bottom">
+
+      <div class="inner">
+
+
+       <div id="copyright">TCopyright © 2016 bigbetpro.com. All Rights Reserved</div>
+
+       <div class="clearboth"></div>
+
+     </div>
+
+   </div>
+
+
+ </footer>
+
+ <script type="text/javascript">
+  function revslider_showDoubleJqueryError(sliderID) {
+    var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
+    errorMessage += "<br> This includes make eliminates the revolution slider libraries, and make it not work.";
+    errorMessage += "<br><br> To fix it you can:<br>&nbsp;&nbsp;&nbsp; 1. In the Slider Settings -> Troubleshooting set option:  <strong><b>Put JS Includes To Body</b></strong> option to true.";
+    errorMessage += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jquery.js include and remove it.";
+    errorMessage = "<span style='font-size:16px;color:#BC0C06;'>" + errorMessage + "</span>";
+    jQuery(sliderID).show().html(errorMessage);
+  }
+</script>
+</div> <!-- body wrap -->
+
+<div id="right-app">
+
+  <div class="right-app-head">
+
+    <h3><i class="fa fa-comments" aria-hidden="true"></i>Live chat - Thảo luận kèo</h3>
+
+    <script type="text/javascript">
+     jQuery(document).ready(function(){
+       bigHeight = jQuery(window).height();
+       documentWidth = jQuery(document).width();   
+       if(documentWidth < 1600 && documentWidth > 500){
+        chat_height = bigHeight - 70;       
+      }
+      else if(documentWidth > 1600) {
+        chat_height = bigHeight - 140; 
+      }
+
+
+      setTimeout(function(){
+        jQuery("#chat-right iframe").css('height', chat_height);
+      }, 2000);
+
+    })
+
+     jQuery( window ).resize(function() {
+       bigHeight = jQuery(window).height();    
+       documentWidth = jQuery(document).width();   
+       if(documentWidth < 1600 && documentWidth > 500){
+        chat_height = bigHeight - 70;       
+      }
+      else if(documentWidth > 1600) {
+        chat_height = bigHeight - 140; 
+      }
+      jQuery("#chat-right iframe").css('height', chat_height);
+    })
+
+   </script>
+   <div id="chat-right">
+     <div class="custom-head-chat">
+      <a target="blank" href="{{ base_url }}chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>Phóng to room chat</a>
+    </div>
+    <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 335px;height:700px ">{"handle":"keonhacai8888","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
+  </div>
+</div>
+
+</div>
+
+</div> 
+
+<div id="pop1" class="simplePopup">
+
+</div>
+
+<div class="m-menu">
+
+  <div class="m-menu-inner">
+
+    <div class="m-menu-header">
+
+     <div class="icon-open-menu"><a href="javascript:void(0)"><i class="fa fa-bars" aria-hidden="true"></i></a></div> 
+
+     <div class="m-logo"><a href="{{ base_url }}"><img width="80px" src="{{ assets_folder }}/images/knc888.jpg"></a></div>
+
+   </div>
+
+   <ul>
+
+    {% for row in menus %}
+      {% if row.parent_id==0 and row.Parents==NULL %}
+        {% if current_menu(1)==row.menu_code %}
+         <li class="active"><a href="{{ site_url(row.menu_code) }}"><i class="{{row.css_icon}}" aria-hidden="true"></i>{{ row.menu_name }}</a></li>
+       {% else %}
+         <li><a href="{{ site_url(row.menu_code) }}"><i class="{{row.css_icon}}"></i>{{ row.menu_name }}</a></li>
+       {% endif %}
+     {% endif %}
+   {% endfor %}
+
+ </ul>
+
+</div>
+
+</div>
+<div class="bottom-menu">
+  <ul>
+    <li><a href="{{ base_url }}tips/"><i class="fa fa-key icon-red" aria-hidden="true"></i><span>Tips</span></a></li>        
+    <li><a href="{{ base_url }}truc-tiep-bd/"><i class="fa fa-futbol-o" aria-hidden="true"></i><span>Live</span></a></li>
+    <li><a href="{{ base_url }}nhan-dinh/"><i class="fa fa-key icon-red" aria-hidden="true"></i><span>Nhận định</span></a></li>      
+    <li><a class="m-view-chat" href="{{ base_url }}chat-bong-da/"><i class="fa fa-commenting-o icon-blue" aria-hidden="true"></i><span>Chat</span></a></li>
+  </ul>
+</div>
+  <!--div class="app-chat">
+    <iframe src="http://kenobongao.chatango.com/" width="100%" height="200px"></iframe>
+  </div-->
+  <script type='text/javascript' src='{{ base_url }}plugins/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+  <script type='text/javascript' src='{{ base_url }}plugins/revslider/js/jquery.themepunch.tools.min.js?ver=5.2.6'></script>
+  <script type='text/javascript' src='{{ base_url }}plugins/revslider/js/jquery.themepunch.revolution.min.js?ver=5.2.6'></script>
+  <script type='text/javascript' src='{{ assets_folder }}/js/jquery.fancybox.min.js?ver=2.1.5'></script>
+  <script type='text/javascript' src='{{ assets_folder }}/js/custom.combine.js?ver=4.5.6'></script>
+  <script type='text/javascript' src='{{ assets_folder }}/js/jquery.tools.validator.min.js?ver=1.2.5'></script>
+
+  <script type="text/javascript">
+    var image_url='{{ assets_folder }}/images';
+    var theme_url='{{ assets_folder }}';
+    var responsve_image_resize=true;
+    var fancybox_options = {
+      skin : 'theme',
+      title_type : 'float',
+      width : 800,
+      height : 600,
+      autoSize: true,
+      autoWidth: false,
+      autoHeight: false,
+      fitToView : true,
+      aspectRatio: false,
+      arrows: true,
+      closeBtn: true,
+      closeClick: false,
+      nextClick: false,
+      autoPlay: false,
+      playSpeed: 3000,
+      preload: 3,
+      loop: true,
+      thumbnail : true,
+      thumbnail_width : 50,
+      thumbnail_height : 50,
+      thumbnail_position: 'bottom'
+    };
+    var pie_progress_bar_color = "#333",
+    pie_progress_track_color = "#e5e5e5";
+    var nav2select_indentString = "–";
+    var nav2select_defaultText = "Navigate to...";
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84078818-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script type='text/javascript' src='{{ assets_folder }}/js/jquery.simplePopup.js'></script> 
+  <script type='text/javascript' src="https://use.fontawesome.com/2e315dba53.js"></script>
+  <script type='text/javascript' >
+    jQuery(".app-show-right").click(function(){
+        jQuery("#right-app").toggleClass("active-app-right");
+    });
+  </script>
+  
+  {% block JS_LIB_PAGE %}
+
+  {% endblock %}
+
+</body>
+
+</html>

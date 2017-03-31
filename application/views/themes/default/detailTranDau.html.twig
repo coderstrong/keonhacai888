@@ -1,0 +1,54 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+	<div class="entry content entry-content type-page">
+
+		<header>
+			<div class="entry_info">
+				<h3 style="color: white"><a style="color: white" rel="bookmark" href="">TRỰC TIẾP BÓNG ĐÁ - BIGBETPRO</a></h3>
+				<span style="color: white">Chúc quý vị và các bạn nhiều niềm vui</span>
+				<div class="entry_meta">
+				</div>
+			</div>
+		</header>
+		
+		{% if livefixture['auto_idsimulator'] != '' and livefixture['auto_idsimulator'] != null %}
+		<div class="vitual">
+			<object width="100%" height="450" id="playZonePlayer" type="application/x-shockwave-flash" data="http://1xbet.com/getZone/Zone.swf"><param name="menu" value="false"><param name="wmode" value="opaque"><param name="allowFullScreen" value="true"><param name="AllowScriptAccess" value="always"><param name="scale" value="exactFit"><param name="flashvars" value="ZonePlayGameId={{livefixture['auto_idsimulator']}}&amp;scaleMode=scaleAll&amp;videoID={{livefixture['auto_idsimulator']}}&amp;gameId={{livefixture['auto_idsimulator']}}&amp;lng=vi&amp;sport=1&amp;ref=1"></object>
+        </div>
+		{% endif %}
+
+		{% if serverid == -1 %}
+			<div class="commingsoon">
+	            <div class="text-play">
+		            <h4 class="blink">LINK LIVE ĐANG ĐƯỢC CẬP NHẬT</h4>
+		            <strong>Link bóng cỏ thường trễ 2' nhớ F5 liên tục cập nhật xem nha ...</strong><br/>
+		            <a target="_blank" href="https://www.fb.com/Bigbetpro-154670908266074">Like Fanpage</a> để chúng tôi phục vụ các bạn tốt nhất.
+	            </div>
+	        </div>
+		{% else %}
+			<div class="player">
+				{{servers[serverid]}}
+			</div>
+		{% endif %}
+		
+		<div class="videostream">
+			{% for i in 0..8 %}
+				{% if servers[i] != '' and servers[i] != null %}
+					{% if i==serverid %}
+						<a href="javascript:void(0);" title="{{livefixture['fixtures_slug']}}" >
+			            	<i class="fa fa-youtube-play" aria-hidden="true"></i>Server {{i}}
+			            </a>
+					{% else %}
+						<a href="{{site_url('truc-tiep')}}/{{livefixture['fixtures_id']}}/{{i}}/{{livefixture['fixtures_slug']}}" title="{{livefixture['fixtures_slug']}}">
+			            	Server {{i}}
+			            </a>
+					{% endif %}
+		            
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

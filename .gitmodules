@@ -1,0 +1,6 @@
+[submodule "sys"]
+	path = sys
+	url = https://coderstrong@bitbucket.org/coderstrong/sys_core.git
+[submodule "assets/grocery_crud"]
+	path = assets/grocery_crud
+	url = https://coderstrong@bitbucket.org/coderstrong/grocery_crud.git

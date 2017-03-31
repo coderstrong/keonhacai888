@@ -1,0 +1,144 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+<div class="entry content entry-content type-page">
+
+	<div class="section-app live-section">
+		<h3 class="app-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch trực tiếp – Giải đấu lớn</h3>
+
+			<table class="tips table-responsive list-match list-td table_style">		
+				<tbody>
+					<tr style="opacity: 0;background: none!important">
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+					</tr> 
+					{% for _fix_main in fixtures %}
+						{% if _fix_main['fixtures_type'] == 1 %}
+							{% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+							<tr>
+								<td>
+									<img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+									<strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+								</td>
+								<td>
+									<div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+									<div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+									{% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+										<div class="show-button">
+											<i class="fa fa-clock-o" aria-hidden="true"></i>
+											<a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+										</div>
+									{% else %}
+										<div class="show-button">
+											<i class="fa fa-clock-o" aria-hidden="true"></i>
+											<a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+										</div>
+									{% endif %}
+								</td>
+								<td>
+									<strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+									<img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+								</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+	</div>
+
+	<div class="section-app live-section">
+		<h3 class="app-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch Trực Tiếp – Giải Đấu Nhỏ</h3>
+
+			<table class="tips table-responsive list-match list-td table_style">		
+				<tbody>
+					<tr style="opacity: 0;background: none!important">
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+						<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+					</tr> 
+					{% for _fix_main in fixtures %}
+						{% if _fix_main['fixtures_type'] == 2 or  _fix_main['fixtures_type'] == 3 %}
+							{% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+							<tr>
+								<td>
+									<img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+									<strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+								</td>
+								<td>
+									<div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+									<div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+									{% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+										<div class="show-button">
+											<i class="fa fa-clock-o" aria-hidden="true"></i>
+											<a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+										</div>
+									{% else %}
+										<div class="show-button">
+											<i class="fa fa-clock-o" aria-hidden="true"></i>
+											<a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+										</div>
+									{% endif %}
+								</td>
+								<td>
+									<strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+									<img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+								</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+
+
+					</tbody>
+				</table>
+			
+		</div>
+
+		<div class="section-app live-section">
+			<h3 class="app-title"><i class="fa fa-futbol-o" aria-hidden="true"></i> Lịch Trực Tiếp – Videostream HD</h3>
+
+				<table class="tips table-responsive list-match list-td table_style">		
+					<tbody>
+						<tr style="opacity: 0;background: none!important">
+							<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+							<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+							<td width="33.33%" style="padding: 0!important;border:none!important"></td>
+						</tr> 
+						{% for _fix_main in fixtures %}
+							{% if _fix_main['fixtures_type'] == 4 or _fix_main['fixtures_type'] == 5 %}
+								{% set _datelive = GMT0toGMT7(_fix_main['time']) %}
+								<tr>
+									<td>
+										<img class="home-image" width="30" data-src="{{ _fix_main['home_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+										<strong class="team-name">{{ _fix_main['club_home'] }}</strong>
+									</td>
+									<td>
+										<div class="show_time">{{ _datelive | date("d/m/Y H:i") }}</div>
+										<div class="show-tour">{{ _fix_main['tournament_name'] }}</div>
+										{% if _datelive > (GMT0toGMT7() - 7800) and _datelive <= GMT0toGMT7() %}
+											<div class="show-button">
+												<i class="fa fa-clock-o" aria-hidden="true"></i>
+												<a class="button-live still-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Đang diễn ra</a>
+											</div>
+										{% else %}
+											<div class="show-button">
+												<i class="fa fa-clock-o" aria-hidden="true"></i>
+												<a class="button-live not-live" title="{{live.TeamHome_name}} vs {{live.TeamAway_name}}" href="/truc-tiep/{{ _fix_main['fixtures_id'] }}/{{ _fix_main['fixtures_slug']}}">Trực Tiếp</a>
+											</div>
+										{% endif %}
+									</td>
+									<td>
+										<strong class="team-name">{{ _fix_main['club_away'] }}</strong>
+										<img class="way-image" width="30" data-src="{{ _fix_main['away_image'] }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)"/>
+									</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+		</div>
+
+	</div>
+
+{% endblock %}

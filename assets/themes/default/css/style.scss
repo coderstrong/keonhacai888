@@ -1,0 +1,607 @@
+// Constant
+// 
+$WIDTH_DEFAULT    : 1200px;
+$HEIGHT_LOGO      : 50px;
+
+
+$FONTSIZE_CONTENT : 1em;
+$FONTSIZE_TITLE : 1em;
+$FONTSIZE_WIDGET_TITLE : 1.2em;
+$FONTSIZE_H3_TITLE: 1.5em;
+$LINEHIGHT_WIDGET_TITLE : 2.2em;
+
+$COLOR_MENU : #9c9c9c;
+$COLOR_MENU_ACTIVE : #e3e3e3;
+$COLOR_TITLE : #fff;
+
+$COLOR_BAR_WIDGET : #9c9c9c;
+$COLOR_TITLE_WIDGET : #333;
+$COLOR_CONTENT : #000;
+
+
+$BACKGROUD_TOP_HEADER : #2f2f2f;
+$BACKGROUD_BOTTOM_HEADER : #fb4834;
+
+$BACKGROUD_TOP_FOOTER : #1f1f1f;
+$BACKGROUD_BOTTOM_FOOTER : #353535;
+
+$BACKGROUD_BODY : #ededed;
+
+
+//mixin
+.pull-left {
+    float: left !important;
+}
+.pull-right {
+    float: right !important;
+}
+
+
+//reset bootraps
+html,body,ul,li,ol{
+	padding: 0;
+	margin : 0;
+	list-style: none;
+	color : #555;
+}
+h1,h2,h3,h4,h5,h6{
+	color: #333;
+}
+
+
+a{
+	color: inherit;
+}
+
+
+.container{
+	// width: $WIDTH_DEFAULT;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.navbar-brand{
+	height: auto;
+
+	img{
+		height: $HEIGHT_LOGO;
+	}
+}
+body{
+	background: $BACKGROUD_BODY;
+}
+
+//home css
+
+img.e-zoom {
+	-webkit-transition: all 1s ease; /* Safari and Chrome */
+	-moz-transition: all 1s ease; /* Firefox */
+	-ms-transition: all 1s ease; /* IE 9 */
+	-o-transition: all 1s ease; /* Opera */
+	transition: all 1s ease;
+}
+
+img.e-zoom:hover {
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+	transform:scale(1.25);
+}
+
+header{
+	margin: 0 0 15px;
+}
+.top-header{
+	background: $BACKGROUD_TOP_HEADER none repeat scroll 0 0;
+	margin: 0px;
+
+	nav.navbar-default{
+		background-color: transparent;
+		border: none;
+		margin: 0px;
+		ul.navbar-nav{
+			li{
+				a{
+					font-size: 1.2em;
+		    		font-weight: bold;
+		    		line-height: 50px;
+					color: $COLOR_MENU;
+					&:hover
+					{
+						color: $COLOR_MENU_ACTIVE;
+					}
+
+					&:focus
+					{
+						color:  $COLOR_MENU;
+					}
+				}
+				
+				&.dropdown{
+					ul 
+					{
+						a{
+							font-size: $FONTSIZE_CONTENT;
+							font-weight : normal;
+							line-height: 25px;
+							// color: $COLOR_MENU;
+						}
+
+						&.dropdown-menu{
+							padding: 0px;
+							border: none;
+						}
+					}
+
+				}
+
+				&.open{
+					a{
+						background-color: $BACKGROUD_TOP_HEADER;
+					}
+					a:hover, a:focus{
+						background-color: $BACKGROUD_TOP_HEADER;
+						color: $COLOR_MENU_ACTIVE;
+					}
+
+				}
+
+				&.active a{
+					background: $BACKGROUD_BOTTOM_HEADER;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.dropdown-menu{
+		.divider{
+			margin: 0px;
+			padding: 0;
+			border-color: $COLOR_MENU;
+		}
+	}
+
+	.navbar-toggle{
+		margin-top: 22px;
+		position: absolute;
+		float: none;
+		right: 5px;
+
+	}
+}
+
+
+
+.bottom-header{
+	background: $BACKGROUD_BOTTOM_HEADER none repeat scroll 0 0;
+	margin: 0px;
+
+	a{
+		color: $COLOR_TITLE;
+	}
+
+	// .container, .hot-topics{
+	// 	padding: 0px;
+	// }
+	.title-carousel{
+    	font-size: $FONTSIZE_TITLE;
+		font-weight: bold;
+		color: $COLOR_TITLE;
+    	padding: 0  15px 0 0px;
+		margin: 6px 0;
+		line-height: 1.7em;
+		border-right: 1px solid #fff; 
+		width: auto;
+	}
+	.list_carousel{
+		line-height: 1.7em;
+		margin: 6px 0;
+	}
+
+	.search-bar{
+
+		input.search-control{
+			background : $BACKGROUD_BOTTOM_HEADER;
+			border: 0px;
+			border-left: 1px solid #fff;
+			box-shadow: none;
+			transition: none;
+			color: $COLOR_TITLE;
+			margin: 6px 0;
+			padding: 2px 10px;
+			width: 100%;
+			&:focus{
+				box-shadow: none;
+				border-radius: 0px;
+			}
+		}
+		button{
+			background : $BACKGROUD_TOP_HEADER !important;
+			border: 0px;
+			box-shadow: none;
+			transition: none;
+			color: $COLOR_TITLE;
+			padding: 8px 13px;
+			border-radius: 0px;
+			&:focus{
+				box-shadow: none;
+				border-radius: 0px;
+			}
+		}
+	}
+}
+
+
+
+
+.widget-time, .widget-view{
+	i{
+		padding: 1px 4px 0 0;
+	}
+	font-size: 0.8em;
+	color: $COLOR_BAR_WIDGET;
+}
+
+.widget-view{
+	float: right;
+	
+}
+
+.widget-post{
+	background: #fff;
+
+	//widget
+	.widget-title{
+		font-size: $FONTSIZE_WIDGET_TITLE;
+	    font-weight: bold;
+	    line-height: $LINEHIGHT_WIDGET_TITLE;
+	    margin: 0;
+	    padding: 0;
+	    text-transform: uppercase;
+	    background: $BACKGROUD_BOTTOM_HEADER;
+		color: $COLOR_TITLE;
+	    i{
+	    	padding: 10px 13px;
+	    	margin: 0 5px 0 0;
+	    	background: $BACKGROUD_TOP_HEADER;
+	    }
+	}
+
+	.widget-content{
+		padding: 10px 5px;
+		ul{
+			list-style: outside none none;
+
+			img{
+				width: 60px;
+				margin: 0 5px 0 0;
+			}
+
+			li{
+				margin:  10px 0 0 0; 
+				h4{
+					line-height: 1.3em;
+					font-size: $FONTSIZE_CONTENT;
+					a{
+						color: $COLOR_TITLE_WIDGET;
+						text-transform: uppercase;
+					}
+					margin: 0px;
+				}		
+				
+			}
+		}
+	}
+	
+}
+
+
+.register-bar{
+
+	background: $BACKGROUD_TOP_HEADER;
+	padding: 0;
+	margin: 10px 0;
+	color: #fff;
+	
+	i{
+		font-size: 1.6em;
+		padding:10px 15px;
+		width: 53px;
+		background: $BACKGROUD_BOTTOM_HEADER;
+		text-align: center;
+		top: 0;
+	}
+	h5{
+		color: #fff;
+		font-size: 0.85em;
+		margin: 0;
+		padding : 15px 0 15px 15px;
+
+		// width: 100%;
+	}
+	div.input-group{
+		input.email-register{
+			width: 100%;
+			border: 0px;
+			background: #4a4a4a;
+			padding: 11px 5px;
+		}
+	}
+	.input-group-btn{
+		padding: 0;
+		background: $BACKGROUD_BOTTOM_HEADER;
+		button{
+		 	background: transparent;
+			border: none;
+			border-radius:none;
+			transition: none;
+			box-shadow: none;
+			padding: 11px 10px;
+			color: #fff;
+			&:focus{
+				background: $BACKGROUD_TOP_HEADER;
+			}
+		}
+		
+	}
+}
+
+.hot-news-slider
+{
+	background: #fff;
+	img{
+		width: 100%;
+	}
+	
+	.img-hot{
+		overflow: hidden;
+		position: relative;
+		h3{
+			position: absolute;
+			z-index: 10;
+			padding: 5px 10px;
+			top: 10px;
+			color: #fff;
+		}
+	}
+
+	.lg-hot-item{
+		.img-hot{
+			max-height: 250px;
+			img{
+				min-height: 200px;
+			}
+		}
+	}
+
+	.md-hot-item{
+		.img-hot{
+			max-height: 300px;
+			img{
+				min-height: 250px;
+			}
+		}
+	}
+
+	.sm-hot-item{
+		.img-hot{
+			max-height: 200px;
+			img{
+				min-height: 200px;
+			}
+		}
+	}
+
+	.hot-content{
+		padding: 0 10px;
+	}
+	h3{
+		margin: 5px 0px;
+		font-size: $FONTSIZE_H3_TITLE;
+		font-weight: bold;
+		
+	}
+
+
+}
+
+
+// categorynews
+
+.widget-category
+{
+	.widget-title{
+		position: relative;
+		background: #fff;
+		border-bottom: 3px solid #333;
+		font-size: $FONTSIZE_WIDGET_TITLE;
+		text-transform: uppercase;
+		font-weight: 700;
+		padding: 12px 5px 10px;
+		margin: 10px 0px 15px 0px;
+
+		span.space-1{
+			display: block;
+			height: 3px;
+			width: 5px;
+			position: absolute;
+			z-index: 10;
+			bottom: -3px;
+			right: 65px;
+			background: #fff;
+		}
+		
+		span.space-2{
+			display: block;
+			height: 3px;
+			width: 70px;
+			position: absolute;
+			z-index: 5;
+			bottom: -3px;
+			right: 0px;
+			background: $BACKGROUD_BOTTOM_HEADER;
+		}
+
+		a{
+			text-transform: initial;
+			font-size: 0.8em;
+			font-weight: normal;
+			position: absolute;
+		    right: 10px;
+		    top: 15px;
+		}
+	}
+
+	.listvideos{
+		li{
+			margin: 5px 0px;
+		}
+	}
+
+}
+
+.categorynews{
+
+	
+
+
+
+}
+
+
+
+
+.newspost
+{
+	>ul{
+		>li{
+			background: #fff;
+			padding: 10px 15px;
+			margin: 0px 0px 15px;
+
+			h3{
+				margin: 5px 0px 10px;
+			}
+			
+			a.images{
+				margin: 0px 0px 15px;
+				display: block;
+				max-height: 250px;
+				overflow: hidden;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+.widget-ramdompost{
+	ul{
+		li{
+			img{
+				width: 100%;
+				margin: 0 0 5px 0;
+			}
+		}
+	}
+}
+
+
+
+
+.footer
+{
+	font-size: 0.9em;
+	.top-footer{
+		padding: 30px 0px 20px;
+		background: $BACKGROUD_TOP_FOOTER;
+		color: #919191;
+	}
+
+	.bottom-footer{
+		padding: 8px 0px;
+		background: $BACKGROUD_BOTTOM_FOOTER;
+		color: #cdcdcd;
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	.reset-padding{
+	 	padding: 0px;
+	}
+
+	
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 1200px) {
+	.reset-padding{
+	 	padding: 0px;
+	}
+	
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.hot-news-slider 
+	{
+		.reset-padding{
+		 	padding: 0px;
+		}
+		.hot-content{
+			display: none;
+		}
+		
+	}
+
+	.register-bar
+	{
+		h5{
+			display: none;
+		}
+	}
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
