@@ -21,6 +21,8 @@ class Manager extends BackendController {
 				'fa fa-television' => 'television', 'fa fa-commenting-o icon-blue' => 'blue commenting',
 				'fa fa-comments' => 'comment', 'fa fa-star icon-yellow' => 'yellow start', 
 				'fa fa-dashboard' => 'dashboard',
+				'fa fa-lightbulb-o' => 'tips',
+				'fa fa-television' => 'tivi',
 				);
 
 			$crud = new grocery_CRUD();
