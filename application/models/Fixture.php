@@ -101,7 +101,7 @@ class Fixture extends CI_Model {
 		$server_2, $server_3, $server_4, $server_5, $server_6, $server_7, $server_8, $auto_sopcast, $auto_nowgoal, $auto_idsimulator)
 	{
 		$query = 0;
-		$_id =$this->IsExist($referent_id);
+		$_id =$this->IsExist($referent_id, $fixtures_type);
 
 		$arr_data = array
 			(
@@ -149,11 +149,12 @@ class Fixture extends CI_Model {
 		}
 	}
 
-	function IsExist($referent_id)
+	function IsExist($referent_id, $fixtures_type)
 	{
 		$this->db->select('fixtures_id');
 		$this->db->from('fixtures');
 		$this->db->where('referent_id' , $referent_id);
+		$this->db->where('fixtures_type' , $fixtures_type);
 		$this->db->limit(1);
 		$query = $this->db->get();
 
