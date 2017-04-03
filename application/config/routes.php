@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //home
 $route['trang-chu'] = 'frontend/home';
+$route['ket-qua-xo-so'] = 'frontend/home/ketquaxoso';
 
 //tips
 $route['tips'] = 'frontend/LiveTips';

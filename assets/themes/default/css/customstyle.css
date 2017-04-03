@@ -280,3 +280,7 @@ table.dealers td:first-child{
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+
+.box-chatroom .m-chat iframe, .box-chatroom .pc-chat iframe {
+	position: inherit !important;
+}

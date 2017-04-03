@@ -48,13 +48,9 @@ class Home extends FrontendController {
 		$this->twig->display('index');
 	}
 
-	public function loadfilterajax($date='')
+	public function ketquaxoso()
 	{
-		$tournamentid = $this->input->post('tournamentid');
-		$data['livematchs'] = $this->LiveMatch->getLiveMatch(1000, 0, '', $date, $tournamentid);
-
-		$this->twig->set($data);
-        $this->twig->display('_ajax/listfixture');
+        $this->twig->display('ketquaxoso');
 	}
 
 	//authenticated

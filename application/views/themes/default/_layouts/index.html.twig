@@ -84,8 +84,8 @@
 
 <link rel="image_src" href="{{ assets_folder }}images/12bet.gif">
 
-<link rel="icon" href="{{ assets_folder }}images/cropped-Logo_keonhacai888_02-01-32x32.jpg" sizes="32x32" />
-<link rel="icon" href="{{ assets_folder }}images/cropped-Logo_keonhacai888_02-01-192x192.jpg" sizes="192x192" />
+<link rel="icon" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-192x192.jpg" sizes="192x192" />
 
 <meta name="msapplication-TileImage" content="{{ assets_folder }}/images/cropped-Logo_keonhacai888_02-01-1.jpg" />
 
@@ -134,7 +134,7 @@
   {% endblock %}
 
   <link href="{{ assets_folder }}/css/bigbet.css" media="screen" rel="stylesheet" type="text/css">
-  <link href="{{ assets_folder }}/css/customstyle.css?=v1.01" media="screen" rel="stylesheet" type="text/css">
+  <link href="{{ assets_folder }}/css/customstyle.css?=v1.21" media="screen" rel="stylesheet" type="text/css">
   <style type="text/css" id="rs-plugin-settings-inline-css"> </style>
 </head>
 
@@ -155,34 +155,7 @@
      </div>
    </div>
    <div class="bigbet-app">
-  {# <div class="app-top">
-   <div class="app-top-1">
-        <!--div class="title-match">Manchester vs Chealse<span>18:00</span></div>
-        <span class="time-match">23/11/2016</span-->
-        </div>
-        <div class="list-app-top-2">
-         <div class="app-top-item top-item-1">
-       <!--div class="title-match">Myanmar vs Malaysia<span>15:00</span></div>
-       <span class="time-match">23/11/2016</span-->
-       </div>
-       <div class="app-top-item top-item-2">
-       <!--div class="title-match">Monaco vs   Marseille<span>15:00</span></div>
-       <span class="time-match">23/11/2016</span-->
-       </div>
-       <div class="app-top-item top-item-3">
-       <!--div class="title-match">Chelsea FC vs Tottenham Hotspur<span>21:00</span></div>
-       <span class="time-match">23/11/2016</span-->
-       </div>
-       <div class="app-top-item top-item-4">
-       <!--div class="title-match">Bayern Munich vs Bayer Leverkusen<span>23:15</span></div>
-       <span class="time-match">23/11/2016</span-->
-       </div>
-       <div class="app-top-item top-item-5">
-       <!--div class="title-match">Sevilla vs Valencia<span>23:15</span></div>
-       <span class="time-match">23/11/2016</span-->
-       </div>
-     </div>
-   </div> #}
+
    <div class="sidebar001">
     <div class="side-logo">
      <a href="{{ site_url() }}">
@@ -287,13 +260,32 @@
 
         {% endif %}
         
-        {% if current_url == 'keno-bong-ao' %}
-      
+        {% if current_url == 'keno-bong-ao'%}
+        
         <section class="box-chatroom relative">
+
+          {% if isMobile() == FALSE %}
+
           <div class="pc-chat">
-            <div class="absolute custom-head-chat"><a href="/chat-bong-da/" target="blank">KEONHACAI888.COM - Keno - Bóng Ảo</a></div>
+            <div class="absolute custom-head-chat">
+              <a target="blank" href="/chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>KEONHACAI888.COM - Keno - Bóng Ảo</a>
+            </div>
             <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height:500px ">{"handle":"kenobongao","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
           </div>
+
+          {% else %}
+
+          <div class="pc-chat">
+            <div class="absolute custom-head-chat">
+              <a target="blank" href="/chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>KEONHACAI888.COM - Keno - Bóng Ảo</a>
+            </div>
+            <script id="cid0123456792" async style="width:100%;height:500px;" type="text/javascript" src="//st.chatango.com/js/gz/emb_fullsize.js" >
+                {"handle":"kenobongao","arch":"js","styles":{"b":100,"v":0,"w":0,"ac":1}}
+            </script>
+          </div>
+
+          {% endif %}
+
         </section>
 
         {% endif %}
@@ -348,15 +340,28 @@
     {% if current_url != 'keno-bong-ao' %}
 
     <section class="box-chatroom relative">
+      {% if isMobile() == FALSE %}
+
       <div class="pc-chat">
         <div class="absolute custom-head-chat">
-          <a target="blank" href="/chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>Phóng to room chat</a>
+          <a target="blank" href="/chat-bong-da"><i class="fa fa-search" aria-hidden="true"></i>Phóng to room chat</a>
         </div>
         <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height:500px ">{"handle":"keonhacai8888","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
       </div>
-    </section>
 
-    
+      {% else %}
+
+      <div class="pc-chat">
+        <div class="app-chat">
+        <div class="absolute custom-head-chat"><a href="/chat-bong-da" target="blank">Phóng to room chat</a></div>
+        <script id="cid0123456792" async style="width:100%;height:500px;" type="text/javascript" src="//st.chatango.com/js/gz/emb_fullsize.js" >
+            {"handle":"keonhacai8888","arch":"js","styles":{"b":100,"v":0,"w":0,"ac":1}}
+        </script>
+        </div>
+      </div>
+
+      {% endif %}
+    </section>
 
     {% endif %}
 
@@ -584,12 +589,18 @@
     })
 
    </script>
+   
    <div id="chat-right">
      <div class="custom-head-chat">
       <a target="blank" href="{{ base_url }}chat-bong-da/"><i class="fa fa-search" aria-hidden="true"></i>Phóng to room chat</a>
     </div>
+    {% if isMobile() == FALSE %}
     <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 335px;height:700px ">{"handle":"keonhacai8888","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
+    {% else %}
+      <script id="cid0020000140119589120" data-cfasync="false" async src="//st.chatango.com/js/gz/emb_fullsize.js" style="width: 335px;height:700px ">{"handle":"keonhacai8888","arch":"js","styles":{"a":"001630","b":100,"c":"fff","d":"fff","e":"fff","k":"001630","l":"001630","m":"001630","p":"11.07","q":"001630","r":100,"t":0,"usricon":0.3,"surl":0}}</script>
+    {% endif %}
   </div>
+
 </div>
 
 </div>
