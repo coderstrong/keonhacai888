@@ -1,4 +1,4 @@
-.tips a.button-live{
+﻿.tips a.button-live{
 	display: inline;
 	padding: 6px 5px;
 	position: static;
@@ -279,4 +279,12 @@ table.dealers td:first-child{
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+.box-chatroom .m-chat iframe, .box-chatroom .pc-chat iframe {
+	position: inherit !important;
+}
+
+.entry-title a {
+  height: auto;
 }

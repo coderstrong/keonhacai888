@@ -24,20 +24,39 @@ class LiveTips extends FrontendController {
         // Ideally you would autoload the parser
     }
 	*/
-    private static $limit = 13;
+
+    private static $limit = 50;
 
     public function __construct()
     {
     	parent::__construct();
-
+    	$this->load->library('pagination');
+    	$this->load->model(['Tips']);
         // Ideally you would autoload the parser
     }
 
-    public function index($date='')
+    public function index()
     {
-    	$this->load->model(['Tips']);
-    	$data['tips'] = $this->Tips->getTip();
+    	$data['tips'] = $this->Tips->getTip(self::$limit, 0);
     	$this->twig->set($data);
     	$this->twig->display('tips');
+    }
+
+    public function tips($obj=NULL)
+    {
+        $page = 1;
+        if($obj!=NULL) {
+            $page = $obj;
+        }
+
+        $config = $this->Tips->paginationTips(self::$limit);
+        $this->pagination->initialize($config);
+
+        $data['pagination'] = $this->pagination->create_links();
+        $offset =  self::$limit * ($page-1);
+        $data['tips'] = $this->Tips->getTip(self::$limit, $offset);
+
+        $this->twig->set($data);
+        $this->twig->display('tips');
     }
 }

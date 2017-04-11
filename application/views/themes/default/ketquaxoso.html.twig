@@ -1,0 +1,92 @@
+{% extends _layout %}
+
+{% block CONTENT %}
+
+{% if banners['TOP_CONTENT'] != null %}
+<div class="top-app-ads">
+    <div class="images-header">
+        <div class="head-banner">
+            {% for i in 0..1 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if banners['TOP_CONTENT'][2] != NULL %}
+        <div class="bottom-banner">
+            {% for i in 2..3 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if banners['TOP_CONTENT'][4] != NULL %}
+        <div class="bottom-banner">
+            {% for i in 4..5 %}
+                {% if banners['TOP_CONTENT'][i] != NULL %}
+                    <div class="mobile-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                    <div class="pc-score">
+                        {{ banners['TOP_CONTENT'][i]['content'] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endif %}
+
+<div class="entry content entry-content type-page">
+
+    {% if isMobile() == FALSE %}
+        
+        <script type="text/javascript">
+            var widgetId = 'ketquavn-widget-embed';
+            var provinceId = 22;
+            var backgroundColor = '#ffffff';
+            var titleColor = '#e62e04';
+            var gdbColor = '#e62e04';
+            var widthWidget = '100%';
+            var fontSize = '16px';
+        </script>
+        <div id="ketquavn-widget-embed">
+            <script type="text/javascript" src="http://ketqua.vn/themes/desktop/widget/widget.js"></script>
+            <script type="text/javascript" src="http://ketqua.vn/tienich/widget/22"></script>
+        </div>
+
+    {% else %}
+
+        <link href="//www.minhngoc.net.vn/style/bangketqua_mini.css" rel="stylesheet" type="text/css" />
+        <div id="box_kqxs_minhngoc">
+            <script language="javascript">  
+                bgcolor="#bfbfbf";
+                titlecolor="#730038";
+                dbcolor="#000000";
+                fsize="18px";
+                kqwidth="100%";
+            </script>
+            <script language="javascript" src="//www.minhngoc.net.vn/getkqxs/mien-bac.js"></script>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

@@ -39,7 +39,7 @@ class Home extends FrontendController {
         $data['fixtures'] = $this->Fixture->GetListTypeByLimit( ['1',['2','3'],['4','5']] , 10, 0);
         $data['news'] = $this->News->getNews(14, 0, 1);
         $data['nhandinh'] = $this->News->getNews(14, 0, 3);
-        $data['tips'] = $this->Tips->getTip(30);
+        $data['tips'] = $this->Tips->getTip(10);
 
         $data['channels'] = $this->Channels->getChannels(30);
         $data['videos'] = $this->Video->getVideos(20);
@@ -48,13 +48,9 @@ class Home extends FrontendController {
 		$this->twig->display('index');
 	}
 
-	public function loadfilterajax($date='')
+	public function ketquaxoso()
 	{
-		$tournamentid = $this->input->post('tournamentid');
-		$data['livematchs'] = $this->LiveMatch->getLiveMatch(1000, 0, '', $date, $tournamentid);
-
-		$this->twig->set($data);
-        $this->twig->display('_ajax/listfixture');
+        $this->twig->display('ketquaxoso');
 	}
 
 	//authenticated
