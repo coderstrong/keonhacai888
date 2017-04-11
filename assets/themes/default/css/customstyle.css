@@ -283,11 +283,8 @@ table.dealers td:first-child{
 
 .box-chatroom .m-chat iframe, .box-chatroom .pc-chat iframe {
 	position: inherit !important;
-<<<<<<< HEAD
 }
 
 .entry-title a {
   height: auto;
-=======
->>>>>>> 928684698cb5e41ad85dbdf726283aa1de5a66f4
 }
