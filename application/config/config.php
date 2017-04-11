@@ -30,7 +30,7 @@ date_default_timezone_set('UTC');
 |
 */
 //$config['base_url'] = 'http://localhost/vcard/public/';
-$config['base_url'] = "http://v2.keonhacai888.com/";
+$config['base_url'] = "http://keonhacai888.com/";
 
 /*
 |--------------------------------------------------------------------------
