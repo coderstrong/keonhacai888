@@ -83,7 +83,7 @@ $route['ajax-videos'] = 'api/Ajaxvideos';
 //dashboard
 $route['dashboard'] = 'dashboard/home';
 //logout
-$route['dashboard/logout'] = 'dashboard/login/logout';
+$route['dashboard/logout'] = 'dashboard/home/logout';
 //change password
 //$route['dashboard/changepassword'] = 'dashboard/login/changePassword';
 //forgot password

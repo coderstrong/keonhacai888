@@ -21,4 +21,11 @@ class Home extends BackendController {
 	{
 		$this->twig->display('dashboard');
 	}
+
+	public function logout()
+	{
+		$this->load->library('user');
+		$this->user->logout();
+		redirect('/dashboard');
+	}
 }

@@ -354,88 +354,59 @@ class Manager extends BackendController {
 		}
 	}
 
-
-
 	public function managersystemuser()
 	{
 		try{
+			//$sess = $this->session->userdata('user_info');
+			$crud = new grocery_CRUD();
+			$crud->set_table('users');
+			$crud->set_subject('User Manager');
+			$crud->set_primary_key('user_id','user_id');
+			$crud->required_fields('user_id');
+			$crud->fields('staff_id','username', 'password', 'verify_password');
+			$crud->columns('username','password');
+			$crud->change_field_type('password', 'password');
+			$crud->change_field_type('verify_password', 'password');
+			$crud->set_rules('password', 'Verify Password', 'trim|required');
+			$crud->set_rules('verify_password', 'Verify Password', 'trim|required|matches[password]');
+			$crud->field_type('staff_id', 'hidden');
+			$crud->unset_add();
+			$crud->unset_delete();
+			$crud->callback_field('password',array($this,'password_empty_callback'));
+			$crud->callback_update(array($this,'encrypt_password_and_update_callback'));
 
-			$sess = $this->session->userdata('is_logged_backend');
+			$output = $crud->render();
+			$array = json_decode(json_encode($output), true);
 
-			if($sess!=null)
-			{
-				$result = $this->UserSystem->getRoles($sess['id']);
-				if($result->RoleId==1)
-				{
-					$crud = new grocery_CRUD();
-					$crud->set_table('UserSystem');
-					$crud->set_subject('User Manager');
-					$crud->set_primary_key('UserId','Permission');
-					$crud->required_fields('UserId');
-					$crud->set_relation_n_n('Permission', 'UserInRoles', 'Role', 'UserId', 'RoleId', 'Role');
-					$crud->columns('UserName','Email','Permission','IsConfirmed');
+			$this->twig->set($array);
+			$this->twig->display('managercrud');
 
-					$crud->add_fields('UserName','Email','Password','Permission','IsConfirmed');
-					$crud->edit_fields('Email','Permission','IsConfirmed');
 
-					$crud->unset_delete();
-					$crud->change_field_type('Password', 'password');
-					
-					$crud->callback_insert(array($this,'encrypt_password_and_insert_callback'));
-
-					$output = $crud->render();
-					$array = json_decode(json_encode($output), true);
-
-					$this->twig->set($array);
-					$this->twig->display('managercrud');
-				}
-				else
-				{
-					$this->session->unset_userdata('is_logged_backend');
-					session_destroy();
-					redirect('dashboard', 'refresh');
-				}
-			}else{
-				redirect('dashboard', 'refresh');
-			}
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
 
+	function encrypt_password_and_update_callback($post_array) {
 
-	function encrypt_password_and_insert_callback($post_array) {
-		$post_array['Password'] = encryptionPassword($post_array['Password']);
+		$this->load->model('Staffs_model');
 
-		$this->db->trans_start();
-
-		$UserInsert = array('UserName' => $post_array['UserName'],
-			'Email' => $post_array['Email'],
-			'Password' => $post_array['Password'],
-			'IsConfirmed' => $post_array['IsConfirmed']
+		$rootinfo = array(
+			'username' => $post_array['username'],
+			'password' => $post_array['password'],
+			'staff_status' => '1'
 			);
 
-		$query = $this->db->insert('UserSystem',$UserInsert);
-		if($query)
-		{
-			$insert_id = $this->db->insert_id();
-
-			foreach ($post_array['Permission'] as $value) {
-				$PermissionInsert = array('UserId' => $insert_id,
-					'RoleId' => $value);
-
-				$query = $this->db->insert('UserInRoles',$PermissionInsert);
-			}
-		}else {
-			return '{"success":false}';
-		}
+		$staff_id = $this->Staffs_model->saveStaff($post_array['staff_id'], $rootinfo);
 		
-		$this->db->trans_complete();
-		return $query;
+		return $staff_id;
 	}
 
+	function password_empty_callback($value = '', $primary_key = null) {
 
-
+		$html = '<div class="form-line"><input id="field-password" class="form-control" name="password" type="password" value="" maxlength="40"></div>';
+		return $html;
+	}
 
 	function edit_time_field_callback($value, $primary_key)
 	{
