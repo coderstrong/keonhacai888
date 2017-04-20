@@ -1118,20 +1118,6 @@ jQuery(document).ready(function($) {
             });
         }
 
-        function updateGridVideos() {
-            // if (!isMobile) {
-            //     return;
-            // }
-            $('.entrygrid').each(function() {
-                var ratio = 5;
-                if (ratio) {
-                    var width = $('.video-grid').width() / ratio;
-                    alert(width);
-                    $(this).css('width', width);
-                }
-            });
-        }
-
         function updateImages() {
             themeUpdateImages($('.image_styled img, .product-thumbnail, .woocommerce-main-image img, .easy-image'));
         }
@@ -1140,31 +1126,26 @@ jQuery(document).ready(function($) {
             match: function() {
                 updateImages();
                 updateVideos();
-                updateGridVideos();
             }
         }).register("screen and (min-width: 768px) and (max-width: 979px)", {
             match: function() {
                 updateImages();
                 updateVideos();
-                updateGridVideos();
             }
         }).register("screen and (min-width: 568px) and (max-width: 767px)", {
             match: function() {
                 updateImages();
                 updateVideos();
-                updateGridVideos();
             }
         }).register("screen and (min-width: 480px) and (max-width: 567px)", {
             match: function() {
                 updateImages();
                 updateVideos();
-                updateGridVideos();
             }
         }).register("screen and (max-width: 479px)", {
             match: function() {
                 updateImages();
                 updateVideos();
-                updateGridVideos();
             }
         }).register("screen and (max-width: 767px)", {
             match: function() {
